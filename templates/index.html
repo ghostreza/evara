@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Info & Layanan{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="container">
+    <h1>Berlayar bersama <span class="accent">Evara</span></h1>
+    <p>{{ site.tagline }} — dengan kru berpengalaman dan peralatan lengkap.</p>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="/booking">Booking Sekarang</a>
+      <a class="btn btn-steel" href="/destinasi">Lihat Destinasi</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Kapal Kami</h2>
+      <p class="muted">Dirawat rutin, dilengkapi peralatan keselamatan standar.</p>
+    </div>
+    <div class="boat-grid reveal">
+      <ul class="spec">
+        <li><strong>Nama</strong><span>{{ boat.nama }}</span></li>
+        <li><strong>Panjang</strong><span>{{ boat.panjang }}</span></li>
+        <li><strong>Kapasitas</strong><span>{{ boat.kapasitas }}</span></li>
+      </ul>
+      <ul class="chips big">
+        {% for f in boat.fasilitas %}<li class="chip">{{ f }}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Layanan &amp; Paket</h2>
+      <p class="muted">Pilih aktivitas Anda — semua termasuk kru dan alat.</p>
+    </div>
+    <div class="grid">
+      {% for s in services %}
+      <article class="card reveal">
+        <h3>{{ s.nama }}</h3>
+        <p class="muted">{{ s.durasi }}</p>
+        <p>{{ s.desk }}</p>
+        <p class="price">Rp {{ "{:,}".format(s.harga) }} <small>/ orang</small></p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Cara Akses &amp; Pemesanan</h2>
+    </div>
+    <ol class="steps">
+      {% for judul, desk in steps %}
+      <li class="reveal"><span class="step-num">{{ loop.index }}</span>
+        <div><h3>{{ judul }}</h3><p class="muted">{{ desk }}</p></div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <h2>Siap berlayar?</h2>
+    <a class="btn btn-gold btn-lg" href="/booking">Cek Jadwal &amp; Pesan</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Booking{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <div class="container">
+    <h1>Booking</h1>
+    <p class="muted">Isi form — pesan akan tersusun rapi dan terkirim ke WhatsApp/email kami sebagai pembuka percakapan.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container booking-grid">
+    <form id="bookingForm" data-wa="{{ site.wa_number }}" data-email="{{ site.email }}">
+      <div class="form-group">
+        <label for="nama">Nama *</label>
+        <input id="nama" name="nama" required placeholder="Nama Anda">
+      </div>
+      <div class="form-group">
+        <label for="kontak">No. WA / Kontak *</label>
+        <input id="kontak" name="kontak" required placeholder="08xx xxxx xxxx">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="tanggal">Tanggal Trip *</label>
+          <input id="tanggal" name="tanggal" type="date" required>
+        </div>
+        <div class="form-group">
+          <label for="pax">Jumlah Orang *</label>
+          <input id="pax" name="pax" type="number" min="1" max="12" value="2" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="paket">Paket *</label>
+        <select id="paket" name="paket" required>
+          {% for s in services %}
+          <option value="{{ s.nama }}" data-harga="{{ s.harga }}">{{ s.nama }} — {{ s.durasi }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="catatan">Catatan</label>
+        <textarea id="catatan" name="catatan" rows="3" placeholder="Permintaan khusus, alat sendiri, dll."></textarea>
+      </div>
+      <div class="form-group radio-row">
+        <label><input type="radio" name="kanal" value="whatsapp" checked> WhatsApp</label>
+        <label><input type="radio" name="kanal" value="email"> Email</label>
+      </div>
+      <button class="btn btn-gold btn-lg" type="submit" id="submitBtn">Kirim via WhatsApp</button>
+    </form>
+
+    <aside class="estimate-card">
+      <h3>Estimasi Biaya</h3>
+      <p class="estimate-value" id="estimate">Rp 0</p>
+      <p class="muted">Estimasi otomatis = harga paket × jumlah orang. Biaya final dikonfirmasi kru (bisa bervariasi sesuai destinasi &amp; BBM).</p>
+    </aside>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/booking.js') }}"></script>
+{% endblock %}

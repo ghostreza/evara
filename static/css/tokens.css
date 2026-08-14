@@ -1,0 +1,26 @@
+/* ===== EVARA DESIGN TOKENS ===== */
+:root {
+    /* palet (60/25/10/5) */
+    --navy:  #0A2540;
+    --steel: #1F4E79;
+    --gold:  #C9A227;
+    --gray:  #8B98A9;
+    --cloud: #F4F7FA;
+    --white: #FFFFFF;
+  
+    /* turunan (hover/fokus) */
+    --navy-hover:  #12314F;
+    --steel-hover: #163A5A;
+    --gold-hover:  #A8861F;
+  
+    /* tipografi */
+    --font-head: "Playfair Display", Georgia, serif;
+    --font-body: "Inter", system-ui, sans-serif;
+  
+    /* layout */
+    --container: 1100px;
+    --nav-h: 64px;
+    --radius: 14px;
+    --shadow: 0 10px 30px rgba(10, 37, 64, .08);
+    --s1: .5rem; --s2: 1rem; --s3: 1.5rem; --s4: 2.5rem; --s5: 4rem;
+  }

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Destinasi{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <div class="container">
+    <h1>Destinasi</h1>
+    <p class="muted">Tempat-tempat yang bisa dijangkau Evara di sekitar pulau.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid">
+      {% for d in destinations %}
+      <article class="card reveal">
+        <h3>{{ d.nama }}</h3>
+        <p class="muted">Waktu tempuh {{ d.waktu }}</p>
+        <p>{{ d.desk }}</p>
+        <ul class="chips">
+          {% for a in d.aktivitas %}<li class="chip">{{ a }}</li>{% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

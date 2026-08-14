@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ site.name }}{% endblock %} · Charter Perahu</title>
+  <meta name="description" content="{{ site.tagline }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a class="brand" href="/">Evara</a>
+    <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+    <nav class="nav-links">
+      <a href="/"        class="{{ 'active' if request.path == '/' }}">Info &amp; Layanan</a>
+      <a href="/destinasi" class="{{ 'active' if request.path == '/destinasi' }}">Destinasi</a>
+      <a href="/booking"  class="btn btn-gold btn-sm {{ 'active' if request.path == '/booking' }}">Booking</a>
+    </nav>
+  </div>
+</header>
+
+<main>{% block content %}{% endblock %}</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>
+      <p class="brand">Evara</p>
+      <p class="muted">{{ site.tagline }}</p>
+    </div>
+    <p class="muted">© <span id="year"></span> Evara · By J&amp;D Associates</p>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
