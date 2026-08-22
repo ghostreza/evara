@@ -1,9 +1,18 @@
 SITE = {
     "name": "Evara",
     "tagline": "Charter perahu untuk memancing, snorkeling, diving & island hopping",
-    "wa_number": "6281234567890",      # format internasional, tanpa +
+    "wa_number": "6281234567890",
     "email": "halo@evara.id",
+    # baru: quote untuk section full-image di halaman utama
+    "quote": "Laut, sekali ia menebar pesonanya, akan memegangmu dalam jaring kekaguman — selamanya.",
+    "quote_author": "Jacques-Yves Cousteau",
 }
+
+STORY = [
+    "Nama Evara berarti “anugerah laut”. Ia lahir di galangan kecil di pulau ini, dibentuk oleh tangan-tangan tukang kayu yang telah puluhan tahun berdamai dengan ombak — dan sejak pelayaran pertamanya, ia tak pernah mengecewakan kru yang menjaganya.",
+    "Bertahun-tahun Evara menemani nelayan lokal mencari nafkah, sebelum akhirnya dirawat ulang menjadi kapal charter yang nyaman dan aman — tanpa kehilangan jiwanya sebagai kapal pekerja. Setiap papan, tali, dan jangkarnya menyimpan cerita.",
+    "Kini Evara menjadi rumah kedua bagi siapa pun yang mencintai laut: mengantar pemancing ke spot yang sunyi, menyelam di terumbu yang hidup, hingga menjaga keluarga yang menikmati matahari terbenam dari deknya. Bagi kami, setiap pelayaran adalah janji — berangkat dengan rasa penasaran, pulang dengan cerita.",
+]
 
 BOAT_INFO = {
     "nama": "KM Evara",

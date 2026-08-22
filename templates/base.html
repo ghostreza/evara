@@ -9,17 +9,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <meta name="theme-color" content="#0A2540">
+  <!-- lambang tab browser -->
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/evara-logo-removebg.png') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/evara-logo-removebg.png') }}">
 </head>
 <body>
 
 <header class="navbar">
   <div class="container nav-inner">
-    <a class="brand" href="/">Evara</a>
+    <a class="brand" href="/" aria-label="Evara — beranda">
+      <img class="brand-logo"
+           src="{{ url_for('static', filename='images/evara-logo-removebg.png') }}"
+           alt="Logo Evara">
+    </a>
     <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false">☰</button>
     <nav class="nav-links">
-      <a href="/"        class="{{ 'active' if request.path == '/' }}">Info &amp; Layanan</a>
+      <a href="/"          class="{{ 'active' if request.path == '/' }}">Info &amp; Layanan</a>
       <a href="/destinasi" class="{{ 'active' if request.path == '/destinasi' }}">Destinasi</a>
-      <a href="/booking"  class="btn btn-gold btn-sm {{ 'active' if request.path == '/booking' }}">Booking</a>
+      <a href="/booking"   class="btn btn-gold btn-sm {{ 'active' if request.path == '/booking' }}">Booking</a>
     </nav>
   </div>
 </header>
@@ -29,7 +37,9 @@
 <footer class="footer">
   <div class="container footer-inner">
     <div>
-      <p class="brand">Evara</p>
+      <img class="footer-logo"
+           src="{{ url_for('static', filename='images/evara-logo-removebg.png') }}"
+           alt="Logo Evara">
       <p class="muted">{{ site.tagline }}</p>
     </div>
     <p class="muted">© <span id="year"></span> Evara · By J&amp;D Associates</p>

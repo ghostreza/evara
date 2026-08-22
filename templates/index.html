@@ -13,6 +13,29 @@
   </div>
 </section>
 
+<!-- ===== QUOTE — gambar penuh + kalimat motivasi ===== -->
+<section class="quote-section" aria-label="Kutipan motivasi">
+  <div class="quote-inner reveal">
+    <span class="quote-line"></span>
+    <blockquote>&ldquo;{{ site.quote }}&rdquo;</blockquote>
+    <cite>— {{ site.quote_author }}</cite>
+  </div>
+</section>
+
+<!-- ===== KISAH EVARA ===== -->
+<section class="section story-section">
+  <div class="container">
+    <div class="story-inner reveal">
+      <span class="quote-line"></span>
+      <h2>Kisah di Balik Nama</h2>
+      {% for p in story %}
+      <p>{{ p }}</p>
+      {% endfor %}
+      <p class="story-sign">— Kru Evara</p>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     <div class="section-head reveal">

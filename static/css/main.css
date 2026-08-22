@@ -92,3 +92,61 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--steel); bor
   .boat-grid, .booking-grid, .form-row { grid-template-columns: 1fr; }
   .estimate-card { position: static; }
 }
+
+/* ===== QUOTE SECTION (full-bleed + parallax) ===== */
+.quote-section {
+  position: relative;
+  min-height: 65vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--white);
+  background: url("../images/quote-ocean.jpg") center / cover no-repeat fixed;
+}
+/* overlay navy: menjaga kontras teks putih tetap lolos aksesibilitas */
+.quote-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 37, 64, .45), rgba(10, 37, 64, .75));
+}
+.quote-inner { position: relative; max-width: 760px; padding: var(--s4) var(--s2); }
+.quote-line { display: block; width: 56px; height: 3px; background: var(--gold); margin: 0 auto var(--s3); }
+.quote-inner blockquote {
+  font-family: var(--font-head);
+  font-size: clamp(1.4rem, 3.2vw, 2.3rem);
+  line-height: 1.45;
+  text-shadow: 0 2px 12px rgba(10, 37, 64, .6);
+}
+.quote-inner cite {
+  display: block;
+  margin-top: var(--s2);
+  color: var(--gold);
+  font-style: normal;
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+/* iOS/mobile tidak mendukung background fixed → fallback scroll */
+@media (max-width: 768px) {
+  .quote-section { background-attachment: scroll; min-height: 55vh; }
+}
+.brand-logo {
+  height: 44px;
+  width: auto;
+  padding: 4px;
+  background: var(--cloud);
+  border-radius: 10px;
+  display: block;
+}
+.brand-logo:hover { opacity: .9; }
+
+.footer-logo {
+  height: 78px;
+  width: auto;
+  padding: 5px 14px;
+  background: var(--cloud);
+  border-radius: 12px;
+  margin-bottom: var(--s1);
+}

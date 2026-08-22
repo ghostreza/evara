@@ -10,7 +10,8 @@ def create_app():
     def index():
         return render_template("index.html",
                                site=content.SITE, boat=content.BOAT_INFO,
-                               services=content.SERVICES, steps=content.ACCESS_STEPS)
+                               services=content.SERVICES, steps=content.ACCESS_STEPS,
+                               story=content.STORY)
 
     @app.route("/destinasi")
     def destinasi():
