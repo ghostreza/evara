@@ -3,22 +3,25 @@
 
 {% block content %}
 <section class="hero">
-  <div class="container">
-    <h1>Berlayar bersama <span class="accent">Evara</span></h1>
-    <p>{{ site.tagline }} — dengan kru berpengalaman dan peralatan lengkap.</p>
-    <div class="hero-actions">
-      <a class="btn btn-gold" href="/booking">Booking Sekarang</a>
-      <a class="btn btn-steel" href="/destinasi">Lihat Destinasi</a>
+  <div class="container hero-inner">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">CHARTER PERAHU · PENGALAMAN LAUT</p>
+      <h1>Berlayar bersama <span class="accent">Evara</span></h1>
+      <p>{{ site.tagline }} — dengan kru berpengalaman dan peralatan lengkap.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="/booking">Booking Sekarang</a>
+        <a class="btn btn-outline" href="/destinasi">Lihat Destinasi</a>
+      </div>
+      <dl class="hero-facts" aria-label="Informasi singkat kapal">
+        <div><dt>12 m</dt><dd>Panjang kapal</dd></div>
+        <div><dt>12</dt><dd>Kapasitas tamu</dd></div>
+        <div><dt>4+</dt><dd>Pilihan trip</dd></div>
+      </dl>
     </div>
-  </div>
-</section>
-
-<!-- ===== QUOTE — gambar penuh + kalimat motivasi ===== -->
-<section class="quote-section" aria-label="Kutipan motivasi">
-  <div class="quote-inner reveal">
-    <span class="quote-line"></span>
-    <blockquote>&ldquo;{{ site.quote }}&rdquo;</blockquote>
-    <cite>— {{ site.quote_author }}</cite>
+    <div class="hero-visual reveal">
+      <img src="{{ url_for('static', filename='images/evara-boat-beach.jpeg') }}" alt="Kapal Evara di perairan tropis">
+      <div class="hero-caption"><span class="status-dot"></span> Siap menemani perjalanan Anda</div>
+    </div>
   </div>
 </section>
 
