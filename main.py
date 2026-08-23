@@ -11,12 +11,17 @@ def create_app():
         return render_template("index.html",
                                site=content.SITE, boat=content.BOAT_INFO,
                                services=content.SERVICES, steps=content.ACCESS_STEPS,
-                               story=content.STORY)
+                               story=content.STORY, story_sign=content.STORY_SIGN,
+                               story_media=content.STORY_MEDIA,
+                               access_options=content.ACCESS_OPTIONS,
+                               access_comparison=content.ACCESS_COMPARISON,
+                               access_tips=content.ACCESS_TIPS)
 
     @app.route("/destinasi")
     def destinasi():
-        return render_template("destinations.html",
-                               site=content.SITE, destinations=content.DESTINATIONS)
+        return render_template("destinations.html", site=content.SITE,
+                               home_port=content.HOME_PORT, rings=content.RINGS,
+                               spots=content.SPOTS)
 
     @app.route("/booking")
     def booking():

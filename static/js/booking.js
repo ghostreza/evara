@@ -9,6 +9,10 @@ tgl.min = new Date().toISOString().split("T")[0];
 // estimasi live
 function hitungEstimasi() {
   const opt = form.paket.selectedOptions[0];
+  if (opt.dataset.byRequest === "true") {
+    document.getElementById("estimate").textContent = "Hubungi kru";
+    return 0;
+  }
   const total = (+opt.dataset.harga || 0) * (+form.pax.value || 0);
   document.getElementById("estimate").textContent = fmtIDR.format(total);
   return total;
@@ -37,7 +41,6 @@ form.addEventListener("submit", (e) => {
 `Halo Evara! 👋 Saya ingin memesan:
 
 Nama    : ${form.nama.value}
-Kontak  : ${form.kontak.value}
 Tanggal : ${tanggalIndo(form.tanggal.value)}
 Paket   : ${form.paket.value} (${form.pax.value} orang)
 Estimasi: ${fmtIDR.format(total)}

@@ -1,28 +1,50 @@
 {% extends "base.html" %}
 {% block title %}Destinasi{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+{% endblock %}
 
 {% block content %}
 <section class="page-head">
   <div class="container">
-    <h1>Destinasi</h1>
-    <p class="muted">Tempat-tempat yang bisa dijangkau Evara di sekitar pulau.</p>
+    <p class="eyebrow">PETA PERJALANAN EVARA</p>
+    <h1>Destinasi di sekitar Tidung</h1>
+    <p class="muted">Jelajahi spot snorkeling, diving, dan fishing dari Dermaga Pulau Tidung.</p>
   </div>
 </section>
 
-<section class="section">
+<section class="section destination-section">
   <div class="container">
-    <div class="grid">
-      {% for d in destinations %}
-      <article class="card reveal">
-        <h3>{{ d.nama }}</h3>
-        <p class="muted">Waktu tempuh {{ d.waktu }}</p>
-        <p>{{ d.desk }}</p>
-        <ul class="chips">
-          {% for a in d.aktivitas %}<li class="chip">{{ a }}</li>{% endfor %}
-        </ul>
-      </article>
-      {% endfor %}
+    <div class="map-toolbar reveal">
+      <div><span class="map-label">SPOT TERPILIH</span><strong id="spotCount">{{ spots|length }} lokasi laut</strong></div>
+      <div class="filter-group" role="group" aria-label="Filter destinasi">
+        <button class="filter-btn active" type="button" data-filter="all">Semua</button>
+        {% for ring in rings %}<button class="filter-btn" type="button" data-filter="ring-{{ ring.ring if ring.ring is defined else loop.index }}">{{ ring.nama }}</button>{% endfor %}
+        {% for kategori in ["Snorkeling", "Diving", "Fishing"] %}<button class="filter-btn" type="button" data-filter="{{ kategori|lower }}">{{ kategori }}</button>{% endfor %}
+      </div>
+    </div>
+    <div class="destination-layout">
+      <div class="map-panel reveal">
+        <div id="destinationMap" aria-label="Peta destinasi Evara di sekitar Pulau Tidung"></div>
+        <div class="map-note"><span class="map-dot"></span> {{ home_port.nama }} · titik keberangkatan</div>
+      </div>
+      <div class="spot-list" id="spotList">
+        {% for spot in spots %}
+        <article class="spot-card reveal" data-ring="ring-{{ spot.ring }}" data-category="{{ spot.kategori|lower }}" data-spot-index="{{ loop.index0 }}">
+          <div class="spot-card-top"><span class="spot-number">{{ "%02d"|format(loop.index) }}</span><span class="spot-distance">{{ spot.jarak }}</span></div>
+          <h2>{{ spot.nama }}</h2>
+          <p>{{ spot.desk }}</p>
+          <button class="spot-link" type="button">Lihat di peta <span aria-hidden="true">↗</span></button>
+        </article>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>window.evaraMapData = {{ {"home_port": home_port, "rings": rings, "spots": spots}|tojson }};</script>
+<script src="{{ url_for('static', filename='js/destinations.js') }}"></script>
 {% endblock %}

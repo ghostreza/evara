@@ -16,10 +16,6 @@
         <label for="nama">Nama *</label>
         <input id="nama" name="nama" required placeholder="Nama Anda">
       </div>
-      <div class="form-group">
-        <label for="kontak">No. WA / Kontak *</label>
-        <input id="kontak" name="kontak" required placeholder="08xx xxxx xxxx">
-      </div>
       <div class="form-row">
         <div class="form-group">
           <label for="tanggal">Tanggal Trip *</label>
@@ -34,7 +30,7 @@
         <label for="paket">Paket *</label>
         <select id="paket" name="paket" required>
           {% for s in services %}
-          <option value="{{ s.nama }}" data-harga="{{ s.harga }}">{{ s.nama }} — {{ s.durasi }}</option>
+          <option value="{{ s.nama }}" data-harga="{{ s.harga or '' }}" data-by-request="{{ 'true' if s.harga is none else 'false' }}">{{ s.nama }} — {{ s.durasi }}</option>
           {% endfor %}
         </select>
       </div>

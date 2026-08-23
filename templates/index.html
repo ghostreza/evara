@@ -34,14 +34,23 @@
       {% for p in story %}
       <p>{{ p }}</p>
       {% endfor %}
-      <p class="story-sign">— Kru Evara</p>
+      <p class="story-sign">{{ story_sign }}</p>
+    </div>
+    <div class="story-gallery reveal" aria-label="Galeri Evara">
+      {% for image, title, caption in story_media %}
+      <figure>
+        <img src="{{ url_for('static', filename='images/' ~ image) }}" alt="{{ title }}">
+        <figcaption><strong>{{ title }}</strong><span>{{ caption }}</span></figcaption>
+      </figure>
+      {% endfor %}
     </div>
   </div>
 </section>
 
-<section class="section">
+<section class="section boat-section">
   <div class="container">
     <div class="section-head reveal">
+      <div class="boat-kicker" aria-hidden="true"><span>KM EVARA</span><i></i><b>✦</b></div>
       <h2>Kapal Kami</h2>
       <p class="muted">Dirawat rutin, dilengkapi peralatan keselamatan standar.</p>
     </div>
@@ -70,7 +79,11 @@
         <h3>{{ s.nama }}</h3>
         <p class="muted">{{ s.durasi }}</p>
         <p>{{ s.desk }}</p>
+        {% if s.harga is not none %}
         <p class="price">Rp {{ "{:,}".format(s.harga) }} <small>/ orang</small></p>
+        {% else %}
+        <p class="price">Hubungi kami</p>
+        {% endif %}
       </article>
       {% endfor %}
     </div>
@@ -81,14 +94,38 @@
   <div class="container">
     <div class="section-head reveal">
       <h2>Cara Akses &amp; Pemesanan</h2>
+      <p class="muted">Pilih jalur menuju Pulau Tidung sesuai waktu, kenyamanan, dan anggaran Anda.</p>
     </div>
-    <ol class="steps">
-      {% for judul, desk in steps %}
-      <li class="reveal"><span class="step-num">{{ loop.index }}</span>
-        <div><h3>{{ judul }}</h3><p class="muted">{{ desk }}</p></div>
-      </li>
+    <div class="access-options">
+      {% for option in access_options %}
+      <details class="access-option reveal" {% if loop.first %}open{% endif %}>
+        <summary><span class="access-index">0{{ loop.index }}</span><span><strong>{{ option.judul }}</strong><small>{{ option.label }}</small></span><b aria-hidden="true">+</b></summary>
+        <div class="access-content">
+          <p class="muted">{{ option.desk }}</p>
+          {% for pilihan in option.pilihan %}
+          <div class="access-choice">
+            <h3>{{ pilihan.nama }}</h3>
+            <dl class="access-facts">
+              <div><dt>Keberangkatan</dt><dd>{{ pilihan.titik }}</dd></div>
+              <div><dt>Tarif</dt><dd>{{ pilihan.harga }}</dd></div>
+              <div><dt>Estimasi</dt><dd>{{ pilihan.durasi }}</dd></div>
+              <div><dt>Jadwal</dt><dd>{{ pilihan.jadwal }}</dd></div>
+            </dl>
+            <h4>Langkah perjalanan</h4>
+            <ol class="access-steps">
+              {% for langkah in pilihan.langkah %}<li>{{ langkah }}</li>{% endfor %}
+            </ol>
+          </div>
+          {% endfor %}
+        </div>
+      </details>
       {% endfor %}
-    </ol>
+    </div>
+    <div class="access-summary reveal">
+      <h3>Ringkasan pilihan</h3>
+      <div class="summary-table-wrap"><table class="summary-table"><thead><tr><th>Berangkat dari</th><th>Kapal</th><th>Tarif</th><th>Durasi</th><th>Keunggulan</th></tr></thead><tbody>{% for row in access_comparison %}<tr>{% for cell in row %}<td>{{ cell }}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div>
+      <div class="access-tips"><strong>Tips penting</strong>{% for tip in access_tips %}<p>{{ tip }}</p>{% endfor %}</div>
+    </div>
   </div>
 </section>
 

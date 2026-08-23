@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  {% block head_extra %}{% endblock %}
   <meta name="theme-color" content="#0A2540">
   <!-- lambang tab browser -->
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/evara-logo-removebg.png') }}">
