@@ -12,6 +12,7 @@ const markers = [];
 const markerLayer = L.layerGroup().addTo(map);
 const spotCards = [...document.querySelectorAll(".spot-card")];
 const spotCount = document.getElementById("spotCount");
+const locationLabel = spotCount.dataset.lang === "en" ? "sea locations" : "lokasi laut";
 
 const portIcon = L.divIcon({ className: "port-marker", html: "<span>⌂</span>", iconSize: [30, 30], iconAnchor: [15, 15] });
 L.marker([mapData.home_port.lat, mapData.home_port.lng], { icon: portIcon })
@@ -49,7 +50,7 @@ function applyFilter(filter) {
     markers[index].setStyle({ opacity: show ? 1 : 0, fillOpacity: show ? 1 : 0 });
     if (show) visible += 1;
   });
-  spotCount.textContent = `${visible} lokasi laut`;
+  spotCount.textContent = `${visible} ${locationLabel}`;
 }
 
 document.querySelectorAll(".filter-btn").forEach((button) => button.addEventListener("click", () => {

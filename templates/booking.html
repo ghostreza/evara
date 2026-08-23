@@ -1,33 +1,33 @@
 {% extends "base.html" %}
-{% block title %}Booking{% endblock %}
+{% block title %}{{ t.booking if lang == 'en' else 'Booking' }}{% endblock %}
 
 {% block content %}
 <section class="page-head">
   <div class="container">
     <h1>Booking</h1>
-    <p class="muted">Isi form — pesan akan tersusun rapi dan terkirim ke WhatsApp/email kami sebagai pembuka percakapan.</p>
+    <p class="muted">{{ t.booking_description if lang == 'en' else 'Isi form — pesan akan tersusun rapi dan terkirim ke WhatsApp/email kami sebagai pembuka percakapan.' }}</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container booking-grid">
-    <form id="bookingForm" data-wa="{{ site.wa_number }}" data-email="{{ site.email }}">
+    <form id="bookingForm" data-wa="{{ site.wa_number }}" data-email="{{ site.email }}" data-lang="{{ lang }}">
       <div class="form-group">
-        <label for="nama">Nama *</label>
-        <input id="nama" name="nama" required placeholder="Nama Anda">
+        <label for="nama">{{ t.name if lang == 'en' else 'Nama' }} *</label>
+        <input id="nama" name="nama" required placeholder="{{ t.your_name if lang == 'en' else 'Nama Anda' }}">
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label for="tanggal">Tanggal Trip *</label>
+          <label for="tanggal">{{ t.trip_date if lang == 'en' else 'Tanggal Trip' }} *</label>
           <input id="tanggal" name="tanggal" type="date" required>
         </div>
         <div class="form-group">
-          <label for="pax">Jumlah Orang *</label>
+          <label for="pax">{{ t.number_people if lang == 'en' else 'Jumlah Orang' }} *</label>
           <input id="pax" name="pax" type="number" min="1" max="12" value="2" required>
         </div>
       </div>
       <div class="form-group">
-        <label for="paket">Paket *</label>
+        <label for="paket">{{ t.package if lang == 'en' else 'Paket' }} *</label>
         <select id="paket" name="paket" required>
           {% for s in services %}
           <option value="{{ s.nama }}" data-harga="{{ s.harga or '' }}" data-by-request="{{ 'true' if s.harga is none else 'false' }}">{{ s.nama }} — {{ s.durasi }}</option>
@@ -35,20 +35,20 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="catatan">Catatan</label>
-        <textarea id="catatan" name="catatan" rows="3" placeholder="Permintaan khusus, alat sendiri, dll."></textarea>
+        <label for="catatan">{{ t.notes if lang == 'en' else 'Catatan' }}</label>
+        <textarea id="catatan" name="catatan" rows="3" placeholder="{{ t.special_request if lang == 'en' else 'Permintaan khusus, alat sendiri, dll.' }}"></textarea>
       </div>
       <div class="form-group radio-row">
         <label><input type="radio" name="kanal" value="whatsapp" checked> WhatsApp</label>
         <label><input type="radio" name="kanal" value="email"> Email</label>
       </div>
-      <button class="btn btn-gold btn-lg" type="submit" id="submitBtn">Kirim via WhatsApp</button>
+      <button class="btn btn-gold btn-lg" type="submit" id="submitBtn">{{ t.send_whatsapp if lang == 'en' else 'Kirim via WhatsApp' }}</button>
     </form>
 
     <aside class="estimate-card">
-      <h3>Estimasi Biaya</h3>
+      <h3>{{ t.estimate if lang == 'en' else 'Estimasi Biaya' }}</h3>
       <p class="estimate-value" id="estimate">Rp 0</p>
-      <p class="muted">Estimasi otomatis = harga paket × jumlah orang. Biaya final dikonfirmasi kru (bisa bervariasi sesuai destinasi &amp; BBM).</p>
+      <p class="muted">{{ t.estimate_description if lang == 'en' else 'Estimasi otomatis = harga paket × jumlah orang. Biaya final dikonfirmasi kru (bisa bervariasi sesuai destinasi &amp; BBM).' }}</p>
     </aside>
   </div>
 </section>

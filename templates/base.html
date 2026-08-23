@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="id">
+<html lang="{{ lang }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}{{ site.name }}{% endblock %} · Charter Perahu</title>
-  <meta name="description" content="{{ site.tagline }}">
+  <title>{% block title %}{{ site.name }}{% endblock %} · {{ t.charter if lang == 'en' else 'Charter Perahu' }}</title>
+  <meta name="description" content="{{ site.tagline if lang == 'id' else 'Boat charter for fishing, snorkeling, diving & island hopping' }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">
@@ -19,16 +19,17 @@
 
 <header class="navbar">
   <div class="container nav-inner">
-    <a class="brand" href="/" aria-label="Evara — beranda">
+    <a class="brand" href="/?lang={{ lang }}" aria-label="{{ t.home_aria if lang == 'en' else 'Evara — beranda' }}">
       <img class="brand-logo"
            src="{{ url_for('static', filename='images/evara-logo-removebg.png') }}"
            alt="Logo Evara">
     </a>
-    <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+    <button class="nav-toggle" aria-label="{{ t.open_menu if lang == 'en' else 'Buka menu' }}" aria-expanded="false">☰</button>
     <nav class="nav-links">
-      <a href="/"          class="{{ 'active' if request.path == '/' }}">Info &amp; Layanan</a>
-      <a href="/destinasi" class="{{ 'active' if request.path == '/destinasi' }}">Destinasi</a>
-      <a href="/booking"   class="btn btn-gold btn-sm {{ 'active' if request.path == '/booking' }}">Booking</a>
+      <a href="/?lang={{ lang }}" class="{{ 'active' if request.path == '/' }}">{{ t.info_services if lang == 'en' else 'Info &amp; Layanan' }}</a>
+      <a href="/destinasi?lang={{ lang }}" class="{{ 'active' if request.path == '/destinasi' }}">{{ t.destinations if lang == 'en' else 'Destinasi' }}</a>
+      <a href="/booking?lang={{ lang }}" class="btn btn-gold btn-sm {{ 'active' if request.path == '/booking' }}">{{ t.booking if lang == 'en' else 'Booking' }}</a>
+      <a class="lang-switch" href="{{ request.path }}?lang={{ 'en' if lang == 'id' else 'id' }}" aria-label="Switch language">{{ 'EN' if lang == 'id' else 'ID' }}</a>
     </nav>
   </div>
 </header>
@@ -41,7 +42,7 @@
       <img class="footer-logo"
            src="{{ url_for('static', filename='images/evara-logo-removebg.png') }}"
            alt="Logo Evara">
-      <p class="muted">{{ site.tagline }}</p>
+      <p class="muted">{{ site.tagline if lang == 'id' else 'Boat charter for fishing, snorkeling, diving & island hopping' }}</p>
     </div>
     <p class="muted">© <span id="year"></span> Evara · By J&amp;D Associates</p>
   </div>

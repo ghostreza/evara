@@ -38,6 +38,8 @@ img { max-width: 100%; display: block; }
 .nav-links a { color: var(--cloud); font-weight: 500; }
 .nav-links a:hover, .nav-links a.active { color: var(--gold); }
 .nav-toggle { display: none; background: none; border: 0; color: var(--cloud); font-size: 1.4rem; cursor: pointer; }
+.lang-switch { border: 1px solid rgba(244, 247, 250, .45); border-radius: 999px; padding: .25rem .55rem; font-size: .72rem; letter-spacing: .08em; }
+.lang-switch:hover { border-color: var(--gold); }
 
 /* ===== TOMBOL ===== */
 .btn { display: inline-block; border-radius: 8px; font-weight: 600; padding: .65rem 1.4rem; transition: .2s; border: 0; cursor: url("../images/marlin-cursor.svg") 4 4, pointer; }

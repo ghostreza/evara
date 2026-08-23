@@ -1,5 +1,6 @@
 // booking.js — estimasi biaya + susun pesan → wa.me / mailto
 const form = document.getElementById("bookingForm");
+const isEnglish = form.dataset.lang === "en";
 const fmtIDR = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 });
 
 // batas tanggal minimal = hari ini
@@ -10,7 +11,7 @@ tgl.min = new Date().toISOString().split("T")[0];
 function hitungEstimasi() {
   const opt = form.paket.selectedOptions[0];
   if (opt.dataset.byRequest === "true") {
-    document.getElementById("estimate").textContent = "Hubungi kru";
+    document.getElementById("estimate").textContent = isEnglish ? "Contact crew" : "Hubungi kru";
     return 0;
   }
   const total = (+opt.dataset.harga || 0) * (+form.pax.value || 0);
@@ -25,7 +26,9 @@ hitungEstimasi();
 form.querySelectorAll("[name=kanal]").forEach((r) =>
   r.addEventListener("change", () => {
     document.getElementById("submitBtn").textContent =
-      form.kanal.value === "whatsapp" ? "Kirim via WhatsApp" : "Kirim via Email";
+      form.kanal.value === "whatsapp"
+        ? (isEnglish ? "Send via WhatsApp" : "Kirim via WhatsApp")
+        : (isEnglish ? "Send via Email" : "Kirim via Email");
   })
 );
 

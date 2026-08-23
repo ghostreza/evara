@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Destinasi{% endblock %}
+{% block title %}{{ t.destinations if lang == 'en' else 'Destinasi' }}{% endblock %}
 {% block head_extra %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 {% endblock %}
@@ -7,18 +7,18 @@
 {% block content %}
 <section class="page-head">
   <div class="container">
-    <p class="eyebrow">PETA PERJALANAN EVARA</p>
-    <h1>Destinasi di sekitar Tidung</h1>
-    <p class="muted">Jelajahi spot snorkeling, diving, dan fishing dari Dermaga Pulau Tidung.</p>
+    <p class="eyebrow">{{ t.dest_eyebrow if lang == 'en' else 'PETA PERJALANAN EVARA' }}</p>
+    <h1>{{ t.dest_title if lang == 'en' else 'Destinasi di sekitar Tidung' }}</h1>
+    <p class="muted">{{ t.dest_description if lang == 'en' else 'Jelajahi spot snorkeling, diving, dan fishing dari Dermaga Pulau Tidung.' }}</p>
   </div>
 </section>
 
 <section class="section destination-section">
   <div class="container">
     <div class="map-toolbar reveal">
-      <div><span class="map-label">SPOT TERPILIH</span><strong id="spotCount">{{ spots|length }} lokasi laut</strong></div>
-      <div class="filter-group" role="group" aria-label="Filter destinasi">
-        <button class="filter-btn active" type="button" data-filter="all">Semua</button>
+      <div><span class="map-label">{{ t.selected_spots if lang == 'en' else 'SPOT TERPILIH' }}</span><strong id="spotCount" data-lang="{{ lang }}">{{ spots|length }} {{ t.sea_locations if lang == 'en' else 'lokasi laut' }}</strong></div>
+      <div class="filter-group" role="group" aria-label="{{ t.filter_dest if lang == 'en' else 'Filter destinasi' }}">
+        <button class="filter-btn active" type="button" data-filter="all">{{ t.all if lang == 'en' else 'Semua' }}</button>
         {% for ring in rings %}<button class="filter-btn" type="button" data-filter="ring-{{ ring.ring if ring.ring is defined else loop.index }}">{{ ring.nama }}</button>{% endfor %}
         {% for kategori in ["Snorkeling", "Diving", "Fishing"] %}<button class="filter-btn" type="button" data-filter="{{ kategori|lower }}">{{ kategori }}</button>{% endfor %}
       </div>
@@ -26,7 +26,7 @@
     <div class="destination-layout">
       <div class="map-panel reveal">
         <div id="destinationMap" aria-label="Peta destinasi Evara di sekitar Pulau Tidung"></div>
-        <div class="map-note"><span class="map-dot"></span> {{ home_port.nama }} · titik keberangkatan</div>
+        <div class="map-note"><span class="map-dot"></span> {{ home_port.nama }} · {{ t.departure_point if lang == 'en' else 'titik keberangkatan' }}</div>
       </div>
       <div class="spot-list" id="spotList">
         {% for spot in spots %}
@@ -34,7 +34,7 @@
           <div class="spot-card-top"><span class="spot-number">{{ "%02d"|format(loop.index) }}</span><span class="spot-distance">{{ spot.jarak }}</span></div>
           <h2>{{ spot.nama }}</h2>
           <p>{{ spot.desk }}</p>
-          <button class="spot-link" type="button">Lihat di peta <span aria-hidden="true">↗</span></button>
+          <button class="spot-link" type="button">{{ t.see_map if lang == 'en' else 'Lihat di peta' }} <span aria-hidden="true">↗</span></button>
         </article>
         {% endfor %}
       </div>

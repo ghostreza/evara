@@ -1,26 +1,26 @@
 {% extends "base.html" %}
-{% block title %}Info & Layanan{% endblock %}
+{% block title %}{{ t.info_services if lang == 'en' else 'Info & Layanan' }}{% endblock %}
 
 {% block content %}
 <section class="hero">
   <div class="container hero-inner">
     <div class="hero-copy reveal">
-      <p class="eyebrow">CHARTER PERAHU · PENGALAMAN LAUT</p>
-      <h1>Berlayar bersama <span class="accent">Evara</span></h1>
-      <p>{{ site.tagline }} — dengan kru berpengalaman dan peralatan lengkap.</p>
+      <p class="eyebrow">{{ t.hero_eyebrow if lang == 'en' else 'CHARTER PERAHU · PENGALAMAN LAUT' }}</p>
+      <h1>{% if lang == 'en' %}{{ t.hero_title }}{% else %}Berlayar bersama{% endif %} <span class="accent">Evara</span></h1>
+      <p>{{ 'Boat charter for fishing, snorkeling, diving & island hopping - ' ~ t.hero_description if lang == 'en' else site.tagline ~ ' — dengan kru berpengalaman dan peralatan lengkap.' }}</p>
       <div class="hero-actions">
-        <a class="btn btn-gold" href="/booking">Booking Sekarang</a>
-        <a class="btn btn-outline" href="/destinasi">Lihat Destinasi</a>
+        <a class="btn btn-gold" href="/booking?lang={{ lang }}">{{ t.book_now if lang == 'en' else 'Booking Sekarang' }}</a>
+        <a class="btn btn-outline" href="/destinasi?lang={{ lang }}">{{ t.see_destinations if lang == 'en' else 'Lihat Destinasi' }}</a>
       </div>
       <dl class="hero-facts" aria-label="Informasi singkat kapal">
-        <div><dt>12 m</dt><dd>Panjang kapal</dd></div>
-        <div><dt>12</dt><dd>Kapasitas tamu</dd></div>
-        <div><dt>4+</dt><dd>Pilihan trip</dd></div>
+        <div><dt>12 m</dt><dd>{{ t.boat_length if lang == 'en' else 'Panjang kapal' }}</dd></div>
+        <div><dt>12</dt><dd>{{ t.guest_capacity if lang == 'en' else 'Kapasitas tamu' }}</dd></div>
+        <div><dt>4+</dt><dd>{{ t.trip_options if lang == 'en' else 'Pilihan trip' }}</dd></div>
       </dl>
     </div>
     <div class="hero-visual reveal">
       <img src="{{ url_for('static', filename='images/evara-boat-beach.jpeg') }}" alt="Kapal Evara di perairan tropis">
-      <div class="hero-caption"><span class="status-dot"></span> Siap menemani perjalanan Anda</div>
+      <div class="hero-caption"><span class="status-dot"></span> {{ t.ready_journey if lang == 'en' else 'Siap menemani perjalanan Anda' }}</div>
     </div>
   </div>
 </section>
@@ -30,7 +30,7 @@
   <div class="container">
     <div class="story-inner reveal">
       <span class="quote-line"></span>
-      <h2>Kisah di Balik Nama</h2>
+      <h2>{{ t.story_title if lang == 'en' else 'Kisah di Balik Nama' }}</h2>
       {% for p in story %}
       <p>{{ p }}</p>
       {% endfor %}
@@ -51,14 +51,14 @@
   <div class="container">
     <div class="section-head reveal">
       <div class="boat-kicker" aria-hidden="true"><span>KM EVARA</span><i></i><b>✦</b></div>
-      <h2>Kapal Kami</h2>
-      <p class="muted">Dirawat rutin, dilengkapi peralatan keselamatan standar.</p>
+      <h2>{{ t.boat_title if lang == 'en' else 'Kapal Kami' }}</h2>
+      <p class="muted">{{ t.boat_description if lang == 'en' else 'Dirawat rutin, dilengkapi peralatan keselamatan standar.' }}</p>
     </div>
     <div class="boat-grid reveal">
       <ul class="spec">
-        <li><strong>Nama</strong><span>{{ boat.nama }}</span></li>
-        <li><strong>Panjang</strong><span>{{ boat.panjang }}</span></li>
-        <li><strong>Kapasitas</strong><span>{{ boat.kapasitas }}</span></li>
+        <li><strong>{{ t.name if lang == 'en' else 'Nama' }}</strong><span>{{ boat.nama }}</span></li>
+        <li><strong>{{ t.length if lang == 'en' else 'Panjang' }}</strong><span>{{ boat.panjang }}</span></li>
+        <li><strong>{{ t.capacity if lang == 'en' else 'Kapasitas' }}</strong><span>{{ boat.kapasitas }}</span></li>
       </ul>
       <ul class="chips big">
         {% for f in boat.fasilitas %}<li class="chip">{{ f }}</li>{% endfor %}
@@ -70,8 +70,8 @@
 <section class="section alt">
   <div class="container">
     <div class="section-head reveal">
-      <h2>Layanan &amp; Paket</h2>
-      <p class="muted">Pilih aktivitas Anda — semua termasuk kru dan alat.</p>
+      <h2>{{ t.services_title if lang == 'en' else 'Layanan &amp; Paket' }}</h2>
+      <p class="muted">{{ t.services_description if lang == 'en' else 'Pilih aktivitas Anda — semua termasuk kru dan alat.' }}</p>
     </div>
     <div class="grid">
       {% for s in services %}
@@ -80,9 +80,9 @@
         <p class="muted">{{ s.durasi }}</p>
         <p>{{ s.desk }}</p>
         {% if s.harga is not none %}
-        <p class="price">Rp {{ "{:,}".format(s.harga) }} <small>/ orang</small></p>
+        <p class="price">Rp {{ "{:,}".format(s.harga) }} <small>{{ t.per_person if lang == 'en' else '/ orang' }}</small></p>
         {% else %}
-        <p class="price">Hubungi kami</p>
+        <p class="price">{{ t.contact_us if lang == 'en' else 'Hubungi kami' }}</p>
         {% endif %}
       </article>
       {% endfor %}
@@ -93,8 +93,8 @@
 <section class="section">
   <div class="container">
     <div class="section-head reveal">
-      <h2>Cara Akses &amp; Pemesanan</h2>
-      <p class="muted">Pilih jalur menuju Pulau Tidung sesuai waktu, kenyamanan, dan anggaran Anda.</p>
+      <h2>{{ t.access_title if lang == 'en' else 'Cara Akses &amp; Pemesanan' }}</h2>
+      <p class="muted">{{ t.access_description if lang == 'en' else 'Pilih jalur menuju Pulau Tidung sesuai waktu, kenyamanan, dan anggaran Anda.' }}</p>
     </div>
     <div class="access-options">
       {% for option in access_options %}
@@ -106,12 +106,12 @@
           <div class="access-choice">
             <h3>{{ pilihan.nama }}</h3>
             <dl class="access-facts">
-              <div><dt>Keberangkatan</dt><dd>{{ pilihan.titik }}</dd></div>
-              <div><dt>Tarif</dt><dd>{{ pilihan.harga }}</dd></div>
-              <div><dt>Estimasi</dt><dd>{{ pilihan.durasi }}</dd></div>
-              <div><dt>Jadwal</dt><dd>{{ pilihan.jadwal }}</dd></div>
+              <div><dt>{{ t.departure if lang == 'en' else 'Keberangkatan' }}</dt><dd>{{ pilihan.titik }}</dd></div>
+              <div><dt>{{ t.fare if lang == 'en' else 'Tarif' }}</dt><dd>{{ pilihan.harga }}</dd></div>
+              <div><dt>{{ t.duration if lang == 'en' else 'Estimasi' }}</dt><dd>{{ pilihan.durasi }}</dd></div>
+              <div><dt>{{ t.schedule if lang == 'en' else 'Jadwal' }}</dt><dd>{{ pilihan.jadwal }}</dd></div>
             </dl>
-            <h4>Langkah perjalanan</h4>
+            <h4>{{ t.travel_steps if lang == 'en' else 'Langkah perjalanan' }}</h4>
             <ol class="access-steps">
               {% for langkah in pilihan.langkah %}<li>{{ langkah }}</li>{% endfor %}
             </ol>
@@ -122,17 +122,17 @@
       {% endfor %}
     </div>
     <div class="access-summary reveal">
-      <h3>Ringkasan pilihan</h3>
-      <div class="summary-table-wrap"><table class="summary-table"><thead><tr><th>Berangkat dari</th><th>Kapal</th><th>Tarif</th><th>Durasi</th><th>Keunggulan</th></tr></thead><tbody>{% for row in access_comparison %}<tr>{% for cell in row %}<td>{{ cell }}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div>
-      <div class="access-tips"><strong>Tips penting</strong>{% for tip in access_tips %}<p>{{ tip }}</p>{% endfor %}</div>
+      <h3>{{ t.summary_title if lang == 'en' else 'Ringkasan pilihan' }}</h3>
+      <div class="summary-table-wrap"><table class="summary-table"><thead><tr><th>{{ t.from if lang == 'en' else 'Berangkat dari' }}</th><th>{{ t.boat if lang == 'en' else 'Kapal' }}</th><th>{{ t.fare if lang == 'en' else 'Tarif' }}</th><th>{{ t.duration if lang == 'en' else 'Durasi' }}</th><th>{{ t.advantage if lang == 'en' else 'Keunggulan' }}</th></tr></thead><tbody>{% for row in access_comparison %}<tr>{% for cell in row %}<td>{{ cell }}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div>
+      <div class="access-tips"><strong>{{ t.important_tips if lang == 'en' else 'Tips penting' }}</strong>{% for tip in access_tips %}<p>{{ tip }}</p>{% endfor %}</div>
     </div>
   </div>
 </section>
 
 <section class="cta-banner">
   <div class="container">
-    <h2>Siap berlayar?</h2>
-    <a class="btn btn-gold btn-lg" href="/booking">Cek Jadwal &amp; Pesan</a>
+    <h2>{{ t.ready_to_sail if lang == 'en' else 'Siap berlayar?' }}</h2>
+    <a class="btn btn-gold btn-lg" href="/booking?lang={{ lang }}">{{ t.check_book if lang == 'en' else 'Cek Jadwal &amp; Pesan' }}</a>
   </div>
 </section>
 {% endblock %}
