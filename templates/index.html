@@ -7,6 +7,7 @@
     <div class="hero-copy reveal">
       <p class="eyebrow">{{ t.hero_eyebrow if lang == 'en' else 'CHARTER PERAHU · PENGALAMAN LAUT' }}</p>
       <h1>{% if lang == 'en' %}{{ t.hero_title }}{% else %}Berlayar bersama{% endif %} <span class="accent">Evara</span></h1>
+      <p class="hero-slogan">{{ site.slogan }}</p>
       <p>{{ 'Boat charter for fishing, snorkeling, diving & island hopping - ' ~ t.hero_description if lang == 'en' else site.tagline ~ ' — dengan kru berpengalaman dan peralatan lengkap.' }}</p>
       <div class="hero-actions">
         <a class="btn btn-gold" href="/booking?lang={{ lang }}">{{ t.book_now if lang == 'en' else 'Booking Sekarang' }}</a>
@@ -14,7 +15,7 @@
       </div>
       <dl class="hero-facts" aria-label="Informasi singkat kapal">
         <div><dt>12 m</dt><dd>{{ t.boat_length if lang == 'en' else 'Panjang kapal' }}</dd></div>
-        <div><dt>12</dt><dd>{{ t.guest_capacity if lang == 'en' else 'Kapasitas tamu' }}</dd></div>
+        <div><dt>6</dt><dd>{{ t.guest_capacity if lang == 'en' else 'Kapasitas tamu' }}</dd></div>
         <div><dt>4+</dt><dd>{{ t.trip_options if lang == 'en' else 'Pilihan trip' }}</dd></div>
       </dl>
     </div>
@@ -52,7 +53,7 @@
     <div class="section-head reveal">
       <div class="boat-kicker" aria-hidden="true"><span>KM EVARA</span><i></i><b>✦</b></div>
       <h2>{{ t.boat_title if lang == 'en' else 'Kapal Kami' }}</h2>
-      <p class="muted">{{ t.boat_description if lang == 'en' else 'Dirawat rutin, dilengkapi peralatan keselamatan standar.' }}</p>
+      <p class="muted">{{ t.boat_description if lang == 'en' else 'Dirawat rutin dan dilengkapi perlengkapan keselamatan untuk perjalanan yang nyaman.' }}</p>
     </div>
     <div class="boat-grid reveal">
       <ul class="spec">
@@ -79,7 +80,11 @@
         <h3>{{ s.nama }}</h3>
         <p class="muted">{{ s.durasi }}</p>
         <p>{{ s.desk }}</p>
-        {% if s.harga is not none %}
+        {% if s.harga_tiers is defined %}
+        <div class="price-list">
+          {% for tier in s.harga_tiers %}<p class="price">Rp {{ "{:,}".format(tier.harga) }} <small>{{ tier.unit }} · {{ tier.label }}</small></p>{% endfor %}
+        </div>
+        {% elif s.harga is not none %}
         <p class="price">Rp {{ "{:,}".format(s.harga) }} <small>{{ t.per_person if lang == 'en' else '/ orang' }}</small></p>
         {% else %}
         <p class="price">{{ t.contact_us if lang == 'en' else 'Hubungi kami' }}</p>

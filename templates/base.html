@@ -42,7 +42,12 @@
       <img class="footer-logo"
            src="{{ url_for('static', filename='images/evara-logo-removebg.png') }}"
            alt="Logo Evara">
-      <p class="muted">{{ site.tagline if lang == 'id' else 'Boat charter for fishing, snorkeling, diving & island hopping' }}</p>
+      <p class="footer-slogan">{{ site.slogan }}</p>
+      <div class="footer-contact">
+        <a href="tel:+{{ site.wa_number }}">+62 877-7538-2824</a>
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      </div>
+      <small class="footer-credit">Made by Vantage Solutions</small>
     </div>
     <p class="muted">© <span id="year"></span> Evara · By J&amp;D Associates</p>
   </div>

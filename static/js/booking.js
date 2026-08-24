@@ -14,7 +14,11 @@ function hitungEstimasi() {
     document.getElementById("estimate").textContent = isEnglish ? "Contact crew" : "Hubungi kru";
     return 0;
   }
-  const total = (+opt.dataset.harga || 0) * (+form.pax.value || 0);
+  const pax = +form.pax.value || 0;
+  const tiers = JSON.parse(opt.dataset.priceTiers || "[]");
+  const tier = tiers.find((item) => pax >= item.min && pax <= item.max);
+  const unitPrice = tier?.harga || +opt.dataset.harga || 0;
+  const total = tier?.unit === "/ trip" ? unitPrice : unitPrice * pax;
   document.getElementById("estimate").textContent = fmtIDR.format(total);
   return total;
 }

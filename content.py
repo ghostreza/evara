@@ -1,6 +1,7 @@
 SITE = {
     "name": "Evara",
     "tagline": "Charter perahu untuk memancing, snorkeling, diving & island hopping",
+    "slogan": "EVARA Blessings of the sea, Timeless memories",
     "wa_number": "6287775382824",
     "email": "jd.associates800@gmail.com",
     # baru: quote untuk section full-image di halaman utama
@@ -27,27 +28,32 @@ STORY_MEDIA = [
 BOAT_INFO = {
     "nama": "KM Evara",
     "panjang": "12 m",
-    "kapasitas": "12 penumpang",
+    "kapasitas": "6 penumpang",
     "fasilitas": [
         "Alat pancing & fighting chair",
-        "Set snorkeling & diving",
+        "Set snorkeling",
+        "Tabung diving untuk certified diver",
         "Cabin teduh & sun deck",
-        "Cool box, air minum & makan siang",
-        "Life jacket & peralatan keselamatan lengkap",
+        "Cool box & air minum",
+        "Life jacket & perlengkapan keselamatan lengkap",
     ],
 }
 
 SERVICES = [
-    {"nama": "Fishing Trip",   "durasi": "Full day (8 jam)",  "harga": 650000,
+    {"nama": "Fishing Trip", "durasi": "Full day (8 jam)", "harga": 250000,
+    "harga_tiers": [{"harga": 250000, "unit": "/ orang", "label": "5–6 orang", "min": 5, "max": 6}, {"harga": 300000, "unit": "/ orang", "label": "3–4 orang", "min": 3, "max": 4}, {"harga": 500000, "unit": "/ orang", "label": "1–2 orang", "min": 1, "max": 2}],
      "desk": "Trip memancing di spot pilihan kru, cocok untuk pemula hingga pemancing serius."},
-    {"nama": "Snorkeling Trip","durasi": "Half day (4 jam)",  "harga": 450000,
+    {"nama": "Snorkeling Trip", "durasi": "Half day (4 jam)", "harga": 350000,
+    "harga_tiers": [{"harga": 350000, "unit": "/ orang", "label": "maks. 6 orang", "min": 1, "max": 6}],
      "desk": "Kunjungi 2–3 spot terumbu dangkal dengan pemandu dan alat lengkap."},
-    {"nama": "Diving Trip",    "durasi": "Full day (2 dive)", "harga": 850000,
-     "desk": "Dive tersembunyi di spot wall & reef, didampingi dive master berlisensi."},
-    {"nama": "Island Hopping", "durasi": "Full day",          "harga": 500000,
-     "desk": "Keliling pulau, beach time, dan sunset point sesuai permintaan Anda."},
+    {"nama": "Diving Trip", "durasi": "Full day (2 dive)", "harga": 500000,
+    "harga_tiers": [{"harga": 500000, "unit": "/ trip", "label": "maks. 3 orang", "min": 1, "max": 3}, {"harga": 700000, "unit": "/ trip", "label": "maks. 6 orang", "min": 4, "max": 6}],
+     "desk": "Wajib certified diver. Harga dan keberangkatan subject to sea state & weather."},
+    {"nama": "Trip to another island", "durasi": "Full day", "harga": 400000,
+    "harga_tiers": [{"harga": 400000, "unit": "/ orang", "label": "maks. 6 orang · usia 9 tahun ke atas", "min": 1, "max": 6}],
+     "desk": "Kunjungi pulau lain, beach time, dan sunset point sesuai permintaan Anda."},
     {"nama": "Property Recovery", "durasi": "Sesuai kebutuhan", "harga": None,
-     "desk": "Layanan pencarian dan pengambilan barang yang hilang di laut hingga kedalaman 100 meter."},
+     "desk": "Layanan pencarian dan pengambilan barang yang hilang di laut hingga kedalaman 100 meter, subject to weather and sea conditions."},
 ]
 
 DESTINATIONS = [
@@ -124,13 +130,13 @@ ACCESS_OPTIONS = [
         ],
     },
     {
-        "judul": "Via Marina Ancol",
-        "label": "Opsi premium & cepat",
+        "judul": "Via Pelabuhan Sunda Kelapa",
+        "label": "Opsi cepat & nyaman",
         "desk": "Cocok untuk keluarga, anak kecil, dan perjalanan yang mengutamakan kenyamanan.",
-        "pilihan": [{"nama": "Speedboat Fiber ber-AC", "titik": "Dermaga 16 / 17, Marina Ancol (Jakarta Utara)", "harga": "± Rp215.000 / orang sekali jalan + tiket masuk Ancol ± Rp30.000–Rp35.000", "durasi": "1–1,5 jam", "jadwal": "Ke Tidung 07.30–08.00 WIB. Kembali 14.30–15.00 WIB.", "langkah": ["Pesan jauh-jauh hari melalui agen travel atau operator speedboat online.", "Masuk melalui Pintu Gerbang Utama Ancol.", "Tiba di Dermaga 16/17 paling lambat pukul 07.00 WIB untuk konfirmasi manifes dan mengambil tiket fisik.", "Boarding pukul 07.30 WIB menuju Pulau Tidung."]}],
+        "pilihan": [{"nama": "Speedboat Fiber ber-AC", "titik": "Pelabuhan Sunda Kelapa, Jakarta Utara", "harga": "Mulai dari Rp175.000 / orang sekali jalan", "durasi": "Sekitar 2 jam", "jadwal": "Ke Tidung 07.30–08.00 WIB. Kembali 14.30–15.00 WIB.", "langkah": ["Pesan jauh-jauh hari melalui agen travel atau operator speedboat.", "Tiba di Pelabuhan Sunda Kelapa paling lambat pukul 07.00 WIB.", "Konfirmasi manifes dan ambil tiket sebelum boarding.", "Ikuti briefing lalu berlayar menuju Pulau Tidung."]}],
     },
     {
-        "judul": "Via Pelabuhan Rawasaban, Tangerang",
+        "judul": "Via Pelabuhan Rawasaban (Citulis), Tangerang",
         "label": "Alternatif Banten & Tangerang",
         "desk": "Pilihan praktis bagi Anda yang tinggal di Tangerang, Banten, atau sekitar Bandara Soekarno-Hatta.",
         "pilihan": [{"nama": "Kapal Motor Kayu / Speedboat Nelayan Lokal", "titik": "Pelabuhan Rawasaban, Cituis, Kabupaten Tangerang", "harga": "± Rp50.000–Rp70.000 / orang sekali jalan", "durasi": "1,5–2 jam", "jadwal": "07.30–08.30 WIB.", "langkah": ["Menuju Dermaga Cituis / Rawasaban di Pakuhaji dengan kendaraan pribadi atau transportasi online.", "Beli tiket penyeberangan langsung di tempat.", "Boarding ke kapal motor nelayan menuju pelabuhan rakyat Pulau Tidung."]}],
@@ -140,13 +146,13 @@ ACCESS_OPTIONS = [
 ACCESS_COMPARISON = [
     ("Kali Adem", "Kapal Kayu", "Rp85.000–Rp100.000", "2,5–3 jam", "Paling murah, pengalaman tradisional"),
     ("Kali Adem", "Kapal Dishub", "Rp54.000–Rp75.000", "1,5–2 jam", "Ekonomis, ber-AC, jadwal teratur"),
-    ("Marina Ancol", "Speedboat AC", "± Rp215.000", "1–1,5 jam", "Cepat, nyaman, ber-AC"),
-    ("Rawasaban", "Kapal Kayu / Motor", "Rp50.000–Rp70.000", "1,5–2 jam", "Akses praktis dari Tangerang/Banten"),
+    ("Sunda Kelapa", "Speedboat AC", "Mulai dari Rp175.000", "Sekitar 2 jam", "Cepat, nyaman, ber-AC"),
+    ("Rawasaban / Citulis", "Kapal Kayu / Motor", "Rp50.000–Rp70.000", "1,5–2 jam", "Akses praktis dari Tangerang/Banten"),
 ]
 
 ACCESS_TIPS = [
     "Tiba di pelabuhan minimal 1 jam sebelum jadwal keberangkatan.",
-    "Parkir inap tersedia di Kali Adem dan Marina Ancol, sekitar Rp25.000/hari untuk motor dan Rp45.000/hari untuk mobil.",
+    "Parkir inap tersedia di Kali Adem dan Pelabuhan Sunda Kelapa; tarif mengikuti ketentuan lokasi.",
 ]
 
 
@@ -160,14 +166,14 @@ def localized_content(lang):
             "access_options": ACCESS_OPTIONS, "access_comparison": ACCESS_COMPARISON, "access_tips": ACCESS_TIPS,
         }
 
-    boat = {**BOAT_INFO, "kapasitas": "12 passengers", "fasilitas": [
-        "Fishing gear & fighting chair", "Snorkeling & diving sets", "Shaded cabin & sun deck",
-        "Cool box, drinking water & lunch", "Life jackets & complete safety equipment",
+    boat = {**BOAT_INFO, "kapasitas": "6 passengers", "fasilitas": [
+        "Fishing gear & fighting chair", "Snorkeling set", "Diving cylinder for certified divers",
+        "Shaded cabin & sun deck", "Cool box & drinking water", "Life jackets & complete safety equipment",
     ]}
     story = [
-        "Evara was not born in a shipyard - it was born from a promise. Donald and Joan, a married couple bound not only by their wedding vows but also by a deep love for the sea: diving among reefs, casting lines at dawn, and reading the stars for navigation. To them, the sea was not a destination - it was home.",
-        "As the highest expression of his love and appreciation, Donald gave Joan a recreational fishing boat. Not merely a gift, but a reflection of the woman who was his life's companion. He named the boat Evara.",
-        "Evara means 'God's most beautiful gift' - just as Joan was in Donald's eyes. From that day on, every dawn breaking over the waves, every line cast, and every dive into the blue sea became gratitude that could never be fully spoken.",
+        "Evara was not born in a shipyard - She was born from a promise. Donald and Joanita, a married couple bound not only by their wedding vows but also by a deep love for the sea: diving among reefs, casting lines at dawn, and reading the stars for navigation. To them, the sea was not a destination - it was home.",
+        "As the highest expression of his love and appreciation, Donald gave Joanita a recreational fishing boat. Not merely a gift, but a reflection of the woman who is his life's companion. He named the boat Evara.",
+        "Evara means 'Gift Of God' - just as Joanita was in Donald's eyes. From that day on, every dawn breaking over the waves, every line cast, and every dive into the blue sea became gratitude that could never be fully spoken.",
         "Today, that love is open to you. With Evara, we invite you to feel the same joy that brought this boat to life: the thrill of a strike at the end of the line, the silence among living reefs, and golden sunlight from the deck. A story that began with gratitude deserves to be shared.",
     ]
     story_media = [(image, title, caption) for image, title, caption in [
@@ -177,11 +183,11 @@ def localized_content(lang):
         ("evara-boat-beach.jpeg", "Evara welcomes the journey", "A small home at sea, ready for new stories."),
     ]]
     services = [
-        {**SERVICES[0], "durasi": "Full day (8 hours)", "desk": "Fishing at the crew's selected spots, suitable for beginners and serious anglers."},
-        {**SERVICES[1], "durasi": "Half day (4 hours)", "desk": "Visit 2-3 shallow reef spots with a guide and complete equipment."},
-        {**SERVICES[2], "desk": "Explore hidden wall and reef dive sites with a licensed dive master."},
-        {**SERVICES[3], "desk": "Island tours, beach time, and sunset points tailored to your request."},
-        {**SERVICES[4], "durasi": "As needed", "desk": "Search and recovery of items lost at sea, down to a depth of 100 meters."},
+        {**SERVICES[0], "nama": "Fishing Trip", "durasi": "Full day (8 hours)", "harga_tiers": [{"harga": 250000, "unit": "/ person", "label": "5-6 guests", "min": 5, "max": 6}, {"harga": 300000, "unit": "/ person", "label": "3-4 guests", "min": 3, "max": 4}, {"harga": 500000, "unit": "/ person", "label": "1-2 guests", "min": 1, "max": 2}], "desk": "Fishing at the crew's selected spots, suitable for beginners and serious anglers."},
+        {**SERVICES[1], "nama": "Snorkeling Trip", "durasi": "Half day (4 hours)", "harga_tiers": [{"harga": 350000, "unit": "/ person", "label": "up to 6 guests", "min": 1, "max": 6}], "desk": "Visit 2-3 shallow reef spots with a guide and a snorkeling set."},
+        {**SERVICES[2], "nama": "Diving Trip", "harga_tiers": [{"harga": 500000, "unit": "/ trip", "label": "up to 3 guests", "min": 1, "max": 3}, {"harga": 700000, "unit": "/ trip", "label": "up to 6 guests", "min": 4, "max": 6}], "desk": "Certified divers only. Price and departure are subject to sea state and weather."},
+        {**SERVICES[3], "nama": "Trip to another island", "harga_tiers": [{"harga": 400000, "unit": "/ person", "label": "up to 6 guests, age 9+", "min": 1, "max": 6}], "desk": "Island tours, beach time, and sunset points tailored to your request."},
+        {**SERVICES[4], "nama": "Property Recovery", "durasi": "As needed", "desk": "Search and recovery of items lost at sea, down to 100 meters, subject to weather and sea conditions."},
     ]
     destinations = [{**item, "desk": desk} for item, desk in zip(DESTINATIONS, [
         "A shallow reef chain with clear water, ideal for morning snorkeling.",
@@ -208,7 +214,7 @@ def localized_content(lang):
             {"nama": "Traditional Wooden Boat / Motor Boat", "titik": "Kali Adem Pier, Muara Angke (North Jakarta)", "harga": "Approx. Rp85,000-Rp100,000 / person one way", "durasi": "2.5-3 hours", "jadwal": "To Tidung 07:00-07:30 WIB daily. Return 07:00-08:00 WIB (Mon-Sat), or 10:00 / 13:00 WIB (Sun/holidays).", "langkah": ["Arrive by 06:00 WIB; KRL to Jakarta Kota Station then Grab/Gojek to the port is recommended.", "Buy a ticket at the wooden boat counter or report to the travel coordinator for a package.", "Board at 07:00 WIB and choose a seat on the upper deck or in the cabin.", "The boat sails directly to Tidung Island Pier."]},
             {"nama": "Dishub Express Boat / JaketBoat", "titik": "Kali Adem Pier, Muara Angke", "harga": "Approx. Rp54,000-Rp75,000 / person one way", "durasi": "1.5-2 hours", "jadwal": "07:30-08:00 WIB.", "langkah": ["Book through the official JaketBoat app or official counter if seats are available.", "Arrive at 06:30 WIB for verification or e-ticket printing.", "Wait in the air-conditioned room and board when your number is called."]},
         ]},
-        {"judul": "Via Marina Ancol", "label": "Premium & fast option", "desk": "Ideal for families, young children, and journeys prioritizing comfort.", "pilihan": [{"nama": "Air-conditioned Fiber Speedboat", "titik": "Pier 16 / 17, Marina Ancol (North Jakarta)", "harga": "Approx. Rp215,000 / person one way + Ancol entrance approx. Rp30,000-Rp35,000", "durasi": "1-1.5 hours", "jadwal": "To Tidung 07:30-08:00 WIB. Return 14:30-15:00 WIB.", "langkah": ["Book well in advance through a travel agent or online speedboat operator.", "Enter through Ancol Main Gate.", "Arrive at Pier 16/17 by 07:00 WIB to confirm the manifest and collect the physical ticket.", "Board at 07:30 WIB for Pulau Tidung."]}]},
-        {"judul": "Via Rawasaban Port, Tangerang", "label": "Banten & Tangerang alternative", "desk": "A practical choice for guests living in Tangerang, Banten, or near Soekarno-Hatta Airport.", "pilihan": [{"nama": "Local Wooden Motor Boat / Fisherman's Speedboat", "titik": "Rawasaban Port, Cituis, Tangerang Regency", "harga": "Approx. Rp50,000-Rp70,000 / person one way", "durasi": "1.5-2 hours", "jadwal": "07:30-08:30 WIB.", "langkah": ["Travel to Cituis / Rawasaban Pier in Pakuhaji by private or online transport.", "Buy the crossing ticket directly at the port.", "Board the fishing boat to the public port at Tidung Island."]}]},
+        {"judul": "Via Sunda Kelapa Port", "label": "Fast & comfortable option", "desk": "Ideal for families, young children, and journeys prioritizing comfort.", "pilihan": [{"nama": "Air-conditioned Fiber Speedboat", "titik": "Sunda Kelapa Port, North Jakarta", "harga": "Starting from Rp175,000 / person one way", "durasi": "Around 2 hours", "jadwal": "To Tidung 07:30-08:00 WIB. Return 14:30-15:00 WIB.", "langkah": ["Book well in advance through a travel agent or speedboat operator.", "Arrive at Sunda Kelapa Port by 07:00 WIB.", "Confirm the manifest and collect your ticket before boarding.", "Follow the briefing and sail to Tidung Island."]}]},
+        {"judul": "Via Rawasaban (Citulis) Port, Tangerang", "label": "Banten & Tangerang alternative", "desk": "A practical choice for guests living in Tangerang, Banten, or near Soekarno-Hatta Airport.", "pilihan": [{"nama": "Local Wooden Motor Boat / Fisherman's Speedboat", "titik": "Rawasaban / Citulis Port, Tangerang Regency", "harga": "Approx. Rp50,000-Rp70,000 / person one way", "durasi": "1.5-2 hours", "jadwal": "07:30-08:30 WIB.", "langkah": ["Travel to Rawasaban / Citulis Pier in Pakuhaji by private or online transport.", "Buy the crossing ticket directly at the port.", "Board the fishing boat to the public port at Tidung Island."]}]},
     ]
-    return {"site": {**SITE, "tagline": "Boat charter for fishing, snorkeling, diving & island hopping"}, "story": story, "story_sign": "- Donald & Joan · Evara Family", "story_media": story_media, "boat": boat, "services": services, "destinations": destinations, "home_port": {**HOME_PORT, "nama": "Tidung Island Pier"}, "rings": RINGS, "spots": spots, "access_steps": [("Fill in the booking form", "Send the form - your message will be neatly prepared for our WhatsApp/email."), ("Confirm & pay deposit", "We reply with schedule availability and total cost within 24 hours."), ("Meet at the pier", "Meeting point: Main Pier, 30 minutes before departure."), ("Briefing & set sail", "Safety briefing, equipment allocation, then Evara departs!")], "access_options": options, "access_comparison": [("Kali Adem", "Wooden Boat", "Rp85,000-Rp100,000", "2.5-3 hours", "Lowest cost, traditional experience"), ("Kali Adem", "Dishub Boat", "Rp54,000-Rp75,000", "1.5-2 hours", "Budget-friendly, air-conditioned, regular schedule"), ("Marina Ancol", "AC Speedboat", "Approx. Rp215,000", "1-1.5 hours", "Fast, comfortable, air-conditioned"), ("Rawasaban", "Wooden / Motor Boat", "Rp50,000-Rp70,000", "1.5-2 hours", "Convenient access from Tangerang/Banten")], "access_tips": ["Arrive at the port at least 1 hour before departure.", "Overnight parking is available at Kali Adem and Marina Ancol, around Rp25,000/day for motorcycles and Rp45,000/day for cars."]}
+    return {"site": {**SITE, "tagline": "Boat charter for fishing, snorkeling, diving & island hopping"}, "story": story, "story_sign": "- Donald & Joan · Evara Family", "story_media": story_media, "boat": boat, "services": services, "destinations": destinations, "home_port": {**HOME_PORT, "nama": "Tidung Island Pier"}, "rings": RINGS, "spots": spots, "access_steps": [("Fill in the booking form", "Send the form - your message will be neatly prepared for our WhatsApp/email."), ("Confirm & pay deposit", "We reply with schedule availability and total cost within 24 hours."), ("Meet at the pier", "Meeting point: Main Pier, 30 minutes before departure."), ("Briefing & set sail", "Safety briefing, equipment allocation, then Evara departs!")], "access_options": options, "access_comparison": [("Kali Adem", "Wooden Boat", "Rp85,000-Rp100,000", "2.5-3 hours", "Lowest cost, traditional experience"), ("Kali Adem", "Dishub Boat", "Rp54,000-Rp75,000", "1.5-2 hours", "Budget-friendly, air-conditioned, regular schedule"), ("Sunda Kelapa", "AC Speedboat", "Starting from Rp175,000", "Around 2 hours", "Fast, comfortable, air-conditioned"), ("Rawasaban / Citulis", "Wooden / Motor Boat", "Rp50,000-Rp70,000", "1.5-2 hours", "Convenient access from Tangerang/Banten")], "access_tips": ["Arrive at the port at least 1 hour before departure.", "Overnight parking is available at Kali Adem and Sunda Kelapa; rates follow the port's regulations."]}
