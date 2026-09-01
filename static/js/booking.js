@@ -50,7 +50,7 @@ function hitungEstimasi() {
   let total = tier?.unit === "/ trip" ? unitPrice : unitPrice * pax;
 
   if (form.paket.value.toLowerCase().includes("snorkeling") && document.getElementById("tourGuide").checked) {
-    total += 100000;
+    total += 200000;
   }
 
   document.getElementById("estimate").textContent = fmtIDR.format(total);
@@ -87,7 +87,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault(); // submit event hanya fires jika valid (HTML5 validation)
   const total = hitungEstimasi();
   const extraText = form.paket.value.toLowerCase().includes("snorkeling") && document.getElementById("tourGuide").checked
-    ? " + tour guide + camera man"
+    ? " + tour guide + Photo & Video"
     : "";
   const pesan =
 `Halo Evara! 👋 Saya ingin memesan:

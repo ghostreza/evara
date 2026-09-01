@@ -82,7 +82,7 @@ SERVICES = [
     },
     {"nama": "Snorkeling 1,5 Jam (Spot)", "durasi": "Maks. 1,5 jam di satu spot", "harga": 250000, "kategori": "Snorkeling",
     "harga_tiers": [{"harga": 250000, "unit": "/ orang", "label": "min 3 — maks 6 orang", "min": 3, "max": 6}],
-     "desk": "Minimal 3 orang dan maksimal 6 orang. Tambahan tour guide + camera man: Rp100.000 per trip."},
+     "desk": "Minimal 3 orang dan maksimal 6 orang. Tambahan tour guide + Photo & Video: Rp200.000 per trip."},
     {"nama": "Fishing Trip", "durasi": "Full day (8 jam)", "harga": 250000, "kategori": "Fishing",
     "harga_tiers": [{"harga": 250000, "unit": "/ orang", "label": "5–6 orang", "min": 5, "max": 6}, {"harga": 300000, "unit": "/ orang", "label": "3–4 orang", "min": 3, "max": 4}, {"harga": 500000, "unit": "/ orang", "label": "1–2 orang", "min": 1, "max": 2}],
      "desk": "Trip memancing di spot pilihan kru, cocok untuk pemula hingga pemancing serius."},
@@ -261,7 +261,7 @@ def localized_content(lang):
             entry["nama"] = "Snorkeling 1.5 Hours (Spot)"
             entry["durasi"] = "Max. 1.5 hours at one spot"
             entry["harga_tiers"] = [{"harga": 250000, "unit": "/ person", "label": "min 3 - max 6 people", "min": 3, "max": 6}]
-            entry["desk"] = "Minimum 3 people and maximum 6 people. Add tour guide + camera man: Rp100,000 per trip."
+            entry["desk"] = "Minimum 3 people and maximum 6 people. Add tour guide + Photo & Video: Rp200,000 per trip."
         elif item["kategori"] == "Fishing":
             entry["nama"] = "Fishing Trip"
             entry["durasi"] = "Full day (8 hours)"
