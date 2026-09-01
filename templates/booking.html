@@ -40,8 +40,11 @@
             {% endfor %}
           </optgroup>
           <optgroup label="Fishing & Diving">
-            {% for s in services if s.kategori in ['Fishing', 'Diving'] %}
+            {% for s in services if s.kategori == 'Fishing' %}
             <option value="{{ s.nama }}" data-harga="{{ s.harga or '' }}" data-price-tiers='{{ s.harga_tiers|default([])|tojson }}' data-by-request="{{ 'true' if s.harga is none else 'false' }}">{{ s.nama }} — {{ s.durasi }}</option>
+            {% endfor %}
+            {% for s in services if s.kategori == 'Diving' %}
+            <option value="{{ s.nama }}" data-harga="{{ s.harga or '' }}" data-price-tiers='{{ s.harga_tiers|default([])|tojson }}' data-by-request="{{ 'true' if s.harga is none else 'false' }}' disabled>{{ s.nama }} — {{ s.durasi }} (Mulai 2027)</option>
             {% endfor %}
           </optgroup>
           {% if services|selectattr('kategori', 'equalto', 'Other')|list %}

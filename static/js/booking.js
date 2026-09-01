@@ -10,8 +10,13 @@ tgl.min = new Date().toISOString().split("T")[0];
 function updateSnorkelingAddon() {
   const selectedPackage = form.paket.value || "";
   const isSnorkeling = selectedPackage.toLowerCase().includes("snorkeling");
+  const isDiving = selectedPackage.toLowerCase().includes("diving");
   const addonGroup = document.getElementById("addonGroup");
   const tourGuide = document.getElementById("tourGuide");
+
+  if (isDiving) {
+    form.paket.value = Array.from(form.paket.options).find((option) => !option.disabled && option.value !== selectedPackage)?.value || form.paket.value;
+  }
 
   addonGroup.hidden = !isSnorkeling;
   if (!isSnorkeling) {

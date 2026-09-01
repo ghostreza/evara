@@ -16,13 +16,14 @@ STORY = [
     "Kini, cinta itu terbuka untuk Anda. Bersama Evara, kami mengundang Anda merasakan kegembiraan yang sama yang melahirkan perahu ini: sensasi strike di ujung pancing, keheningan di antara terumbu yang hidup, dan matahari keemasan dari atas dek. Karena kisah yang dimulai dengan rasa syukur, layak dibagikan kepada banyak orang.",
 ]
 
-STORY_SIGN = "— Donald & Joan · Keluarga Evara"
+STORY_SIGN = "— Joanita & Donald · Keluarga Evara"
 
 STORY_MEDIA = [
-    ("293516c9-66bb-40df-8ea1-08a505bb1a4e.jpeg", "Evara di atas jalur galangan", "Merawat kapal adalah bagian dari menjaga cerita."),
-    ("IMG-20250405-WA0001.jpg", "Evara siap kembali berlayar", "Setiap detail kapal disiapkan untuk perjalanan yang aman."),
-    ("WhatsApp Image 2026-08-13 at 11.37.28.jpeg", "Suasana dermaga Pulau Tidung", "Dari dermaga inilah banyak perjalanan laut dimulai."),
-    ("evara-boat-beach.jpeg", "Evara menyambut perjalanan", "Rumah kecil di atas laut, siap membawa cerita baru."),
+    ("jo-trip.jpeg", "Evara menanti perjalanan baru", "Setiap trip dimulai dari semangat yang sama: kelautan, rasa aman, dan cerita yang hangat."),
+    ("jo-snorkeling.jpeg", "Snorkeling bersama Evara", "Air jernih, terumbu hidup, dan momen santai di laut yang menenangkan."),
+    ("Jo-fishing.jpeg", "Fishing trip di laut Tidung", "Dari pagi sampai siang, kami menyesuaikan jalur menangkap ikan dengan kondisi laut."),
+    ("jo-diving.jpeg", "Diving akan dimulai 2027", "Layanan diving resmi akan mulai pada 2027, dengan jadwal dan harga akan diumumkan kemudian."),
+    ("fish.jpeg", "Evara siap mengantar petualangan", "Perahu dan kru kami siap membawa Anda menjelajahi laut dengan aman dan nyaman."),
 ]
 
 BOAT_INFO = {
@@ -32,7 +33,6 @@ BOAT_INFO = {
     "fasilitas": [
         "Alat pancing & fighting chair",
         "Set snorkeling",
-        "Tabung diving untuk certified diver",
         "Cabin teduh & sun deck",
         "Cool box & air minum",
         "Life jacket & perlengkapan keselamatan lengkap",
@@ -86,9 +86,9 @@ SERVICES = [
     {"nama": "Fishing Trip", "durasi": "Full day (8 jam)", "harga": 250000, "kategori": "Fishing",
     "harga_tiers": [{"harga": 250000, "unit": "/ orang", "label": "5–6 orang", "min": 5, "max": 6}, {"harga": 300000, "unit": "/ orang", "label": "3–4 orang", "min": 3, "max": 4}, {"harga": 500000, "unit": "/ orang", "label": "1–2 orang", "min": 1, "max": 2}],
      "desk": "Trip memancing di spot pilihan kru, cocok untuk pemula hingga pemancing serius."},
-    {"nama": "Diving Trip", "durasi": "Full day (2 dive)", "harga": 500000, "kategori": "Diving",
-    "harga_tiers": [{"harga": 500000, "unit": "/ trip", "label": "maks. 3 orang", "min": 1, "max": 3}, {"harga": 700000, "unit": "/ trip", "label": "maks. 6 orang", "min": 4, "max": 6}],
-     "desk": "Wajib certified diver. Harga dan keberangkatan subject to sea state & weather."},
+    {"nama": "Diving Trip", "durasi": "Mulai 2027", "harga": None, "kategori": "Diving",
+    "harga_tiers": [],
+     "desk": "Layanan diving akan mulai pada 2027. Harga dan jadwal akan diinformasikan saat layanan resmi dibuka."},
     {"nama": "Property Recovery", "durasi": "Sesuai kebutuhan", "harga": None, "kategori": "Other",
      "desk": "Layanan pencarian dan pengambilan barang yang hilang di laut hingga kedalaman 100 meter, subject to weather and sea conditions."},
 ]
@@ -245,10 +245,11 @@ def localized_content(lang):
         "Today, that love is open to you. With Evara, we invite you to feel the same joy that brought this boat to life: the thrill of a strike at the end of the line, the silence among living reefs, and golden sunlight from the deck. A story that began with gratitude deserves to be shared.",
     ]
     story_media = [(image, title, caption) for image, title, caption in [
-        ("293516c9-66bb-40df-8ea1-08a505bb1a4e.jpeg", "Evara at the shipyard", "Caring for the boat is part of caring for its story."),
-        ("IMG-20250405-WA0001.jpg", "Evara ready to sail again", "Every detail is prepared for a safe journey."),
-        ("WhatsApp Image 2026-08-13 at 11.37.28.jpeg", "The Tidung Island pier", "Many ocean journeys begin at this pier."),
-        ("evara-boat-beach.jpeg", "Evara welcomes the journey", "A small home at sea, ready for new stories."),
+        ("jo-trip.jpeg", "Evara welcomes a new journey", "Every trip begins with the same spirit: the sea, comfort, and a warm story."),
+        ("jo-snorkeling.jpeg", "Snorkeling with Evara", "Clear water, living reefs, and calm moments in the ocean."),
+        ("Jo-fishing.jpeg", "Fishing trip in Tidung waters", "From dawn to noon, we tailor the route to the sea and fishing conditions."),
+        ("jo-diving.jpeg", "Diving starts in 2027", "Diving operations will begin in 2027, with schedule and pricing announced later."),
+        ("fish.jpeg", "Evara ready for adventure", "Our boat and crew are ready to take you safely across the sea."),
     ]]
     services = []
     for item in SERVICES:
@@ -268,9 +269,10 @@ def localized_content(lang):
             entry["desk"] = "Fishing at the crew's selected spots, suitable for beginners and serious anglers."
         elif item["kategori"] == "Diving":
             entry["nama"] = "Diving Trip"
-            entry["durasi"] = "Full day (2 dives)"
-            entry["harga_tiers"] = [{"harga": 500000, "unit": "/ trip", "label": "up to 3 guests", "min": 1, "max": 3}, {"harga": 700000, "unit": "/ trip", "label": "up to 6 guests", "min": 4, "max": 6}]
-            entry["desk"] = "Certified divers only. Price and departure are subject to sea state and weather."
+            entry["durasi"] = "Starts in 2027"
+            entry["harga"] = None
+            entry["harga_tiers"] = []
+            entry["desk"] = "Diving service will begin in 2027. Pricing and schedule will be announced when operations officially start."
         elif item["kategori"] == "Other":
             entry["nama"] = "Property Recovery"
             entry["durasi"] = "As needed"
@@ -305,4 +307,4 @@ def localized_content(lang):
         {"judul": "Via Sunda Kelapa Port", "label": "Fast & comfortable option", "desk": "Ideal for families, young children, and journeys prioritizing comfort.", "pilihan": [{"nama": "Air-conditioned Fiber Speedboat", "titik": "Sunda Kelapa Port, North Jakarta", "harga": "Starting from Rp175,000 / person one way", "durasi": "Around 2 hours", "jadwal": "To Tidung 07:30-08:00 WIB. Return 14:30-15:00 WIB.", "langkah": ["Book well in advance through a travel agent or speedboat operator.", "Arrive at Sunda Kelapa Port by 07:00 WIB.", "Confirm the manifest and collect your ticket before boarding.", "Follow the briefing and sail to Tidung Island."]}]},
         {"judul": "Via Cituis Port, Tangerang", "label": "Banten & Tangerang alternative", "desk": "A practical choice for guests living in Tangerang, Banten, or near Soekarno-Hatta Airport.", "pilihan": [{"nama": "Local Wooden Motor Boat / Fisherman's Speedboat", "titik": "Cituis Port, Tangerang Regency", "harga": "Approx. Rp50,000-Rp70,000 / person one way", "durasi": "1.5-2 hours", "jadwal": "07:30-08:30 WIB.", "langkah": ["Travel to Cituis Pier in Pakuhaji by private or online transport.", "Buy the crossing ticket directly at the port.", "Board the fishing boat to the public port at Tidung Island."]}]},
     ]
-    return {"site": {**SITE, "tagline": "Boat charter for fishing, snorkeling, diving & island hopping"}, "story": story, "story_sign": "- Donald & Joan · Evara Family", "story_media": story_media, "boat": boat, "services": services, "destinations": destinations, "home_port": {**HOME_PORT, "nama": "Tidung Island Pier"}, "rings": RINGS, "spots": spots, "access_steps": [("Fill in the booking form", "Send the form - your message will be neatly prepared for our WhatsApp/email."), ("Confirm & pay deposit", "We reply with schedule availability and total cost within 24 hours."), ("Meet at the pier", "Meeting point: Main Pier, 30 minutes before departure."), ("Briefing & set sail", "Safety briefing, equipment allocation, then Evara departs!")], "access_options": options, "access_comparison": [("Kali Adem", "Wooden Boat", "Rp85,000-Rp100,000", "2.5-3 hours", "Lowest cost, traditional experience"), ("Kali Adem", "Dishub Boat", "Rp54,000-Rp75,000", "1.5-2 hours", "Budget-friendly, air-conditioned, regular schedule"), ("Sunda Kelapa", "AC Speedboat", "Starting from Rp175,000", "Around 2 hours", "Fast, comfortable, air-conditioned"), ("Cituis", "Wooden / Motor Boat", "Rp50,000-Rp70,000", "1.5-2 hours", "Convenient access from Tangerang/Banten")], "access_tips": ["Arrive at the port at least 1 hour before departure.", "Overnight parking is available at Kali Adem and Sunda Kelapa; rates follow the port's regulations."]}
+    return {"site": {**SITE, "tagline": "Boat charter for fishing, snorkeling, diving & island hopping"}, "story": story, "story_sign": "- Joanita & Donald · Evara Family", "story_media": story_media, "boat": boat, "services": services, "destinations": destinations, "home_port": {**HOME_PORT, "nama": "Tidung Island Pier"}, "rings": RINGS, "spots": spots, "access_steps": [("Fill in the booking form", "Send the form - your message will be neatly prepared for our WhatsApp/email."), ("Confirm & pay deposit", "We reply with schedule availability and total cost within 24 hours."), ("Meet at the pier", "Meeting point: Main Pier, 30 minutes before departure."), ("Briefing & set sail", "Safety briefing, equipment allocation, then Evara departs!")], "access_options": options, "access_comparison": [("Kali Adem", "Wooden Boat", "Rp85,000-Rp100,000", "2.5-3 hours", "Lowest cost, traditional experience"), ("Kali Adem", "Dishub Boat", "Rp54,000-Rp75,000", "1.5-2 hours", "Budget-friendly, air-conditioned, regular schedule"), ("Sunda Kelapa", "AC Speedboat", "Starting from Rp175,000", "Around 2 hours", "Fast, comfortable, air-conditioned"), ("Cituis", "Wooden / Motor Boat", "Rp50,000-Rp70,000", "1.5-2 hours", "Convenient access from Tangerang/Banten")], "access_tips": ["Arrive at the port at least 1 hour before departure.", "Overnight parking is available at Kali Adem and Sunda Kelapa; rates follow the port's regulations."]}
