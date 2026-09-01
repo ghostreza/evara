@@ -7,7 +7,6 @@
     <div class="hero-copy reveal">
       <p class="eyebrow">{{ t.hero_eyebrow if lang == 'en' else 'CHARTER PERAHU · PENGALAMAN LAUT' }}</p>
       <h1>{% if lang == 'en' %}{{ t.hero_title }}{% else %}Berlayar bersama{% endif %} <span class="accent">Evara</span></h1>
-      <p class="hero-slogan">{{ site.slogan }}</p>
       <p>{{ 'Boat charter for fishing, snorkeling, diving & island hopping - ' ~ t.hero_description if lang == 'en' else site.tagline ~ ' — dengan kru berpengalaman dan peralatan lengkap.' }}</p>
       <div class="hero-actions">
         <a class="btn btn-gold" href="/booking?lang={{ lang }}">{{ t.book_now if lang == 'en' else 'Booking Sekarang' }}</a>
@@ -137,7 +136,7 @@
 <section class="cta-banner">
   <div class="container">
     <h2>{{ t.ready_to_sail if lang == 'en' else 'Siap berlayar?' }}</h2>
-    <a class="btn btn-gold btn-lg" href="/booking?lang={{ lang }}">{{ t.check_book if lang == 'en' else 'Cek Jadwal &amp; Pesan' }}</a>
+    <a class="btn btn-gold btn-lg" href="/booking?lang={{ lang }}">{{ t.check_book if lang == 'en' else 'Cek Jadwal & Pesan' }}</a>
   </div>
 </section>
 {% endblock %}

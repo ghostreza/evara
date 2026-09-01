@@ -59,4 +59,47 @@ document.querySelectorAll(".filter-btn").forEach((button) => button.addEventList
   applyFilter(button.dataset.filter);
 }));
 
+document.querySelectorAll(".spot-gallery").forEach((gallery) => {
+  const track = gallery.querySelector(".spot-gallery-track");
+  const slides = [...gallery.querySelectorAll(".spot-gallery-slide")];
+  const prevButton = gallery.querySelector(".spot-gallery-btn.prev");
+  const nextButton = gallery.querySelector(".spot-gallery-btn.next");
+  const dots = [...gallery.querySelectorAll(".spot-gallery-dot")];
+
+  if (!track || slides.length <= 1) return;
+
+  let currentIndex = 0;
+
+  function updateGallery() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    slides.forEach((slide, index) => slide.classList.toggle("is-active", index === currentIndex));
+    dots.forEach((dot, index) => dot.classList.toggle("active", index === currentIndex));
+  }
+
+  prevButton?.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateGallery();
+  });
+
+  nextButton?.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateGallery();
+  });
+
+  let autoplay = setInterval(() => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateGallery();
+  }, 4000);
+
+  gallery.addEventListener("mouseenter", () => clearInterval(autoplay));
+  gallery.addEventListener("mouseleave", () => {
+    autoplay = setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateGallery();
+    }, 4000);
+  });
+
+  updateGallery();
+});
+
 spotCards.forEach((card, index) => card.querySelector(".spot-link").addEventListener("click", () => selectSpot(index)));

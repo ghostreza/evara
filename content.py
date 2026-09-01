@@ -1,7 +1,7 @@
 SITE = {
     "name": "Evara",
     "tagline": "Charter perahu untuk memancing, snorkeling, diving & island hopping",
-    "slogan": "EVARA Blessings of the sea, Timeless memories",
+    "slogan": "Blessings of the sea, Timeless memories",
     "wa_number": "6287775382824",
     "email": "jd.associates800@gmail.com",
     # baru: quote untuk section full-image di halaman utama
@@ -40,19 +40,56 @@ BOAT_INFO = {
 }
 
 SERVICES = [
-    {"nama": "Fishing Trip", "durasi": "Full day (8 jam)", "harga": 250000,
+    {
+        "nama": "Pulau Air",
+        "durasi": "Trip pulang pergi",
+        "harga": 600000,
+        "kategori": "Island Hopping",
+        "harga_tiers": [{"harga": 600000, "unit": "/ trip", "label": "pulang pergi", "min": 1, "max": 6}],
+        "desk": "Island hopping ke Pulau Air dengan trip pulang pergi."
+    },
+    {
+        "nama": "Pulau Pramuka",
+        "durasi": "Trip pulang pergi",
+        "harga": 700000,
+        "kategori": "Island Hopping",
+        "harga_tiers": [{"harga": 700000, "unit": "/ trip", "label": "pulang pergi", "min": 1, "max": 6}],
+        "desk": "Island hopping ke Pulau Pramuka dengan trip pulang pergi."
+    },
+    {
+        "nama": "Pulau Payung",
+        "durasi": "Trip pulang pergi",
+        "harga": 350000,
+        "kategori": "Island Hopping",
+        "harga_tiers": [{"harga": 350000, "unit": "/ trip", "label": "pulang pergi", "min": 1, "max": 6}],
+        "desk": "Island hopping ke Pulau Payung dengan trip pulang pergi."
+    },
+    {
+        "nama": "Pulau Pari",
+        "durasi": "Trip pulang pergi",
+        "harga": 700000,
+        "kategori": "Island Hopping",
+        "harga_tiers": [{"harga": 700000, "unit": "/ trip", "label": "pulang pergi", "min": 1, "max": 6}],
+        "desk": "Island hopping ke Pulau Pari dengan trip pulang pergi."
+    },
+    {
+        "nama": "Pulau Gosong Patrick",
+        "durasi": "Trip pulang pergi",
+        "harga": 600000,
+        "kategori": "Island Hopping",
+        "harga_tiers": [{"harga": 600000, "unit": "/ trip", "label": "pulang pergi", "min": 1, "max": 6}],
+        "desk": "Island hopping ke Pulau Gosong Patrick dengan trip pulang pergi."
+    },
+    {"nama": "Snorkeling 1,5 Jam (Spot)", "durasi": "Maks. 1,5 jam di satu spot", "harga": 250000, "kategori": "Snorkeling",
+    "harga_tiers": [{"harga": 250000, "unit": "/ orang", "label": "min 3 — maks 6 orang", "min": 3, "max": 6}],
+     "desk": "Minimal 3 orang dan maksimal 6 orang. Tambahan tour guide + camera man: Rp100.000 per trip."},
+    {"nama": "Fishing Trip", "durasi": "Full day (8 jam)", "harga": 250000, "kategori": "Fishing",
     "harga_tiers": [{"harga": 250000, "unit": "/ orang", "label": "5–6 orang", "min": 5, "max": 6}, {"harga": 300000, "unit": "/ orang", "label": "3–4 orang", "min": 3, "max": 4}, {"harga": 500000, "unit": "/ orang", "label": "1–2 orang", "min": 1, "max": 2}],
      "desk": "Trip memancing di spot pilihan kru, cocok untuk pemula hingga pemancing serius."},
-    {"nama": "Snorkeling Trip", "durasi": "Half day (4 jam)", "harga": 350000,
-    "harga_tiers": [{"harga": 350000, "unit": "/ orang", "label": "maks. 6 orang", "min": 1, "max": 6}],
-     "desk": "Kunjungi 2–3 spot terumbu dangkal dengan pemandu dan alat lengkap."},
-    {"nama": "Diving Trip", "durasi": "Full day (2 dive)", "harga": 500000,
+    {"nama": "Diving Trip", "durasi": "Full day (2 dive)", "harga": 500000, "kategori": "Diving",
     "harga_tiers": [{"harga": 500000, "unit": "/ trip", "label": "maks. 3 orang", "min": 1, "max": 3}, {"harga": 700000, "unit": "/ trip", "label": "maks. 6 orang", "min": 4, "max": 6}],
      "desk": "Wajib certified diver. Harga dan keberangkatan subject to sea state & weather."},
-    {"nama": "Trip to another island", "durasi": "Full day", "harga": 400000,
-    "harga_tiers": [{"harga": 400000, "unit": "/ orang", "label": "maks. 6 orang · usia 3 tahun ke atas", "min": 1, "max": 6}],
-     "desk": "Kunjungi pulau lain, beach time, dan sunset point sesuai permintaan Anda."},
-    {"nama": "Property Recovery", "durasi": "Sesuai kebutuhan", "harga": None,
+    {"nama": "Property Recovery", "durasi": "Sesuai kebutuhan", "harga": None, "kategori": "Other",
      "desk": "Layanan pencarian dan pengambilan barang yang hilang di laut hingga kedalaman 100 meter, subject to weather and sea conditions."},
 ]
 
@@ -79,37 +116,68 @@ RINGS = [
 SPOTS = [
     {"nama": "Perairan Pulau Tidung Kecil", "ring": 1, "kategori": "Snorkeling", "jarak": "0–3 km",
      "desk": "Perairan dangkal yang tenang, kaya vegetasi mangrove dan karang tepi. Ideal untuk pemula dan keluarga.",
-     "lat": -5.8032, "lng": 106.5238},
+     "lat": -5.8032, "lng": 106.5238, "image": "Pulau_Tidung_Kecil_1.jpg",
+     "images": ["Pulau_Tidung_Kecil_1.jpg", "Pulau_Tidung_Kecil_2.png", "tidung-kecil-1.jpg"]},
     {"nama": "Area Jembatan Cinta", "ring": 1, "kategori": "Snorkeling", "jarak": "0–3 km",
      "desk": "Menghubungkan Tidung Besar dan Tidung Kecil; transisi air dangkal–sedang. Populer untuk anemon laut dan clownfish.",
-     "lat": -5.7984, "lng": 106.5192},
+     "lat": -5.7984, "lng": 106.5192, "image": "jembatan-cinta-1.jpg",
+     "images": ["jembatan-cinta-1.jpg", "Jembatan-Cinta-2.jpg", "dermaga-tidung-1.jpg"]},
     {"nama": "Tepi Karang Tidung Kecil", "ring": 1, "kategori": "Diving", "jarak": "0–3 km",
      "desk": "Drop-off terumbu kedalaman 10–18 m; cocok untuk fun dive dan pemula Open Water.",
-     "lat": -5.8060, "lng": 106.5300},
+     "lat": -5.8060, "lng": 106.5300, "image": "293516c9-66bb-40df-8ea1-08a505bb1a4e.jpeg",
+     "images": ["293516c9-66bb-40df-8ea1-08a505bb1a4e.jpeg", "IMG-20250405-WA0001.jpg", "evara-boat-beach.jpeg"]},
     {"nama": "Dermaga / Jembatan Cinta", "ring": 1, "kategori": "Fishing", "jarak": "0–3 km",
      "desk": "Dasaran santai dari struktur jembatan/dermaga. Target: ikan karang kecil, kerong-kerong, dan cumi di malam hari.",
-     "lat": -5.7994, "lng": 106.5178},
+     "lat": -5.7994, "lng": 106.5178, "image": "dermaga-tidung-1.jpg",
+     "images": ["dermaga-tidung-1.jpg", "dermaga-tidung-2.jpeg", "WhatsApp Image 2026-08-13 at 11.37.28.jpeg"]},
+    {"nama": "Pulau Air", "ring": 2, "kategori": "Island Hopping", "jarak": "± 3–6 km Utara",
+     "desk": "Pulau indah dengan air tenang dan rataan karang cantik; pilihan favorit untuk island hopping pagi hari.",
+     "lat": -5.7628, "lng": 106.5925, "image": "Pulau-Air-1.jpg",
+     "images": ["Pulau-Air-1.jpg", "Pulau-Air-2.jpg"]},
+    {"nama": "Pulau Pramuka", "ring": 2, "kategori": "Island Hopping", "jarak": "± 4–7 km Timur Laut",
+     "desk": "Pulau dengan panorama pantai dan aktivitas santai, cocok untuk family trip dan sunset time.",
+     "lat": -5.7447, "lng": 106.6150, "image": "pulau-pramuka.jpg",
+     "images": ["pulau-pramuka.jpg", "prmauka-1.jpeg", "pramuka-2.jpeg"]},
+    {"nama": "Pulau Payung (Payung Besar)", "ring": 2, "kategori": "Island Hopping", "jarak": "± 3–6 km Tenggara",
+     "desk": "Rataan karang dangkal jernih, terlindung dari arus kencang, dengan banyak ikan sersan mayor.",
+     "lat": -5.8236, "lng": 106.5544, "image": "pulau-payung-besar-1.jpg",
+     "images": ["pulau-payung-besar-1.jpg", "pulau-payung-1.jpeg"]},
+    {"nama": "Pulau Pari", "ring": 2, "kategori": "Island Hopping", "jarak": "± 10–12 km Timur",
+     "desk": "Pulau dengan pesisir berpasir dan jalur berlayar yang nyaman untuk quick island hopping.",
+     "lat": -5.8596, "lng": 106.6167, "image": "pulau-pari-1.jpg",
+     "images": ["pulau-pari-1.jpg", "pulau-pari-2.jpg"]},
+    {"nama": "Pulau Gosong Patrick", "ring": 2, "kategori": "Island Hopping", "jarak": "± 4–7 km Timur Laut",
+     "desk": "Pulau gosong dengan warna air jernih dan spot snorkeling terkesan eksotis serta santai.",
+     "lat": -5.7958, "lng": 106.6025, "image": "pulau-gosong-patrick-1.jpg",
+     "images": ["pulau-gosong-patrick-1.jpg", "Pulau-gosong-2.jpg"]},
     {"nama": "Pulau Payung", "ring": 2, "kategori": "Snorkeling", "jarak": "± 3–6 km Tenggara",
      "desk": "Rataan karang dangkal jernih (acropora), terlindung dari arus kencang. Banyak ikan sersan mayor.",
-     "lat": -5.8190, "lng": 106.5500},
+     "lat": -5.8190, "lng": 106.5500, "image": "pulau-payung-besar-1.jpg",
+     "images": ["pulau-payung-besar-1.jpg", "pulau-payung-1.jpeg"]},
     {"nama": "Gusong Karang Beras", "ring": 2, "kategori": "Snorkeling", "jarak": "± 7–9 km Timur",
      "desk": "Gosong karang di tengah laut dengan visibilitas sangat jernih; dominan karang lunak.",
-     "lat": -5.7712, "lng": 106.5700},
+     "lat": -5.7712, "lng": 106.5700, "image": "karang-beras.jpeg",
+     "images": ["karang-beras.jpeg", "karang-beras-2.jpg", "karang-beras-deep.jpg"]},
     {"nama": "Pulau Tikus", "ring": 2, "kategori": "Snorkeling", "jarak": "± 10–12 km Timur",
      "desk": "Pulau tak berpenghuni dengan pantai dangkal dan rataan karang yang sangat tenang.",
-     "lat": -5.8563, "lng": 106.5866},
+     "lat": -5.8563, "lng": 106.5866, "image": "pulau-tikus-1.jpg",
+     "images": ["pulau-tikus-1.jpg", "pulau-tikus-2.jpg"]},
     {"nama": "Diving Wall Pulau Payung", "ring": 2, "kategori": "Diving", "jarak": "± 5–7 km Tenggara",
      "desk": "Wall dive 18–25 m; arus sedang–kencang. Kipas laut besar, penyu, dan ikan pelagis.",
-     "lat": -5.8220, "lng": 106.5550},
+     "lat": -5.8220, "lng": 106.5550, "image": "diving-wall-1.jpg",
+     "images": ["diving-wall-1.jpg", "diving-wall-2.jpg"]},
     {"nama": "Gusong Karang Beras Deep", "ring": 2, "kategori": "Diving", "jarak": "± 8–10 km Timur",
      "desk": "Kedalaman 12–20 m dengan karang keras padat; jalur kuwe (GT) dan barakuda.",
-     "lat": -5.7700, "lng": 106.5800},
+     "lat": -5.7700, "lng": 106.5800, "image": "karang-beras-deep.jpg",
+     "images": ["karang-beras-deep.jpg", "karang-beras-2.jpg"]},
     {"nama": "Karang Badongan & Karang Puret", "ring": 2, "kategori": "Fishing", "jarak": "± 5–8 km Barat/BD",
      "desk": "Karang dalam dan rumpon tengah laut. Favorit bottom fishing & jigging: kerapu, kakap merah, lencam.",
-     "lat": -5.8150, "lng": 106.4500},
+     "lat": -5.8150, "lng": 106.4500, "image": "karang-bedongan.jpg",
+     "images": ["karang-bedongan.jpg", "karang-puret.jpg"]},
     {"nama": "Koridor Laut Pulau Pari", "ring": 2, "kategori": "Fishing", "jarak": "± 10–12 km Timur",
      "desk": "Perairan dalam jalur pelagis untuk trolling. Target: tenggiri, tongkol, cakalang.",
-     "lat": -5.8572, "lng": 106.6197},
+     "lat": -5.8572, "lng": 106.6197, "image": "koridor-pulau-pari-1.jpg",
+     "images": ["koridor-pulau-pari-1.jpg", "koridor-pulau-pari-2.jpg"]},
 ]
 
 ACCESS_STEPS = [
@@ -182,13 +250,33 @@ def localized_content(lang):
         ("WhatsApp Image 2026-08-13 at 11.37.28.jpeg", "The Tidung Island pier", "Many ocean journeys begin at this pier."),
         ("evara-boat-beach.jpeg", "Evara welcomes the journey", "A small home at sea, ready for new stories."),
     ]]
-    services = [
-        {**SERVICES[0], "nama": "Fishing Trip", "durasi": "Full day (8 hours)", "harga_tiers": [{"harga": 250000, "unit": "/ person", "label": "5-6 guests", "min": 5, "max": 6}, {"harga": 300000, "unit": "/ person", "label": "3-4 guests", "min": 3, "max": 4}, {"harga": 500000, "unit": "/ person", "label": "1-2 guests", "min": 1, "max": 2}], "desk": "Fishing at the crew's selected spots, suitable for beginners and serious anglers."},
-        {**SERVICES[1], "nama": "Snorkeling Trip", "durasi": "Half day (4 hours)", "harga_tiers": [{"harga": 350000, "unit": "/ person", "label": "up to 6 guests", "min": 1, "max": 6}], "desk": "Visit 2-3 shallow reef spots with a guide and a snorkeling set."},
-        {**SERVICES[2], "nama": "Diving Trip", "harga_tiers": [{"harga": 500000, "unit": "/ trip", "label": "up to 3 guests", "min": 1, "max": 3}, {"harga": 700000, "unit": "/ trip", "label": "up to 6 guests", "min": 4, "max": 6}], "desk": "Certified divers only. Price and departure are subject to sea state and weather."},
-        {**SERVICES[3], "nama": "Trip to another island", "harga_tiers": [{"harga": 400000, "unit": "/ person", "label": "up to 6 guests, age 3+", "min": 1, "max": 6}], "desk": "Island tours, beach time, and sunset points tailored to your request."},
-        {**SERVICES[4], "nama": "Property Recovery", "durasi": "As needed", "desk": "Search and recovery of items lost at sea, down to 100 meters, subject to weather and sea conditions."},
-    ]
+    services = []
+    for item in SERVICES:
+        entry = {**item}
+        if item["kategori"] == "Island Hopping":
+            entry["durasi"] = "Round trip"
+            entry["desk"] = f"Island hopping to {item['nama']} with round-trip service."
+        elif item["kategori"] == "Snorkeling":
+            entry["nama"] = "Snorkeling 1.5 Hours (Spot)"
+            entry["durasi"] = "Max. 1.5 hours at one spot"
+            entry["harga_tiers"] = [{"harga": 250000, "unit": "/ person", "label": "min 3 - max 6 people", "min": 3, "max": 6}]
+            entry["desk"] = "Minimum 3 people and maximum 6 people. Add tour guide + camera man: Rp100,000 per trip."
+        elif item["kategori"] == "Fishing":
+            entry["nama"] = "Fishing Trip"
+            entry["durasi"] = "Full day (8 hours)"
+            entry["harga_tiers"] = [{"harga": 250000, "unit": "/ person", "label": "5-6 guests", "min": 5, "max": 6}, {"harga": 300000, "unit": "/ person", "label": "3-4 guests", "min": 3, "max": 4}, {"harga": 500000, "unit": "/ person", "label": "1-2 guests", "min": 1, "max": 2}]
+            entry["desk"] = "Fishing at the crew's selected spots, suitable for beginners and serious anglers."
+        elif item["kategori"] == "Diving":
+            entry["nama"] = "Diving Trip"
+            entry["durasi"] = "Full day (2 dives)"
+            entry["harga_tiers"] = [{"harga": 500000, "unit": "/ trip", "label": "up to 3 guests", "min": 1, "max": 3}, {"harga": 700000, "unit": "/ trip", "label": "up to 6 guests", "min": 4, "max": 6}]
+            entry["desk"] = "Certified divers only. Price and departure are subject to sea state and weather."
+        elif item["kategori"] == "Other":
+            entry["nama"] = "Property Recovery"
+            entry["durasi"] = "As needed"
+            entry["desk"] = "Search and recovery of items lost at sea, down to 100 meters, subject to weather and sea conditions."
+        services.append(entry)
+
     destinations = [{**item, "desk": desk} for item, desk in zip(DESTINATIONS, [
         "A shallow reef chain with clear water, ideal for morning snorkeling.",
         "A favorite casting spot; sand emerges at low tide and is beautiful for photos.",

@@ -30,10 +30,12 @@ img { max-width: 100%; display: block; }
 .section-head p { max-width: 520px; margin-top: .5rem; }
 
 /* ===== NAVBAR ===== */
-.navbar { position: sticky; top: 0; z-index: 50; background: var(--navy); height: var(--nav-h); }
+.navbar { position: sticky; top: 0; z-index: 50; background: var(--navy); min-height: var(--nav-h); }
 .navbar .nav-inner { width: 100%; max-width: none; padding-inline: clamp(2rem, 5vw, 5rem); }
-.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
-.brand { font-family: var(--font-head); font-size: 1.5rem; color: var(--gold); font-weight: 700; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; min-height: var(--nav-h); padding-block: .6rem; }
+.brand { display: inline-flex; align-items: center; }
+.brand-mark { display: flex; flex-direction: column; align-items: center; gap: .35rem; }
+.brand-tagline { color: var(--gold); font-family: var(--font-head); font-size: .72rem; letter-spacing: .02em; text-align: center; line-height: 1.2; }
 .nav-links { display: flex; align-items: center; gap: var(--s3); }
 .nav-links a { color: var(--cloud); font-weight: 500; }
 .nav-links a:hover, .nav-links a.active { color: var(--gold); }
@@ -160,6 +162,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--steel); bor
 /* ===== FOOTER ===== */
 .footer { background: var(--navy); color: var(--cloud); padding: var(--s4) 0; margin-top: var(--s5); }
 .footer-inner { display: flex; justify-content: space-between; gap: var(--s3); flex-wrap: wrap; }
+.footer-brand { display: flex; flex-direction: column; align-items: flex-start; }
 
 /* ===== REVEAL ANIMATION ===== */
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
@@ -296,7 +299,9 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--steel); bor
 .footer-slogan {
   color: var(--gold);
   font-family: var(--font-head);
-  font-size: 1rem;
+  font-size: .9rem;
+  line-height: 1.4;
+  max-width: 270px;
 }
 .footer-contact {
   display: flex;
@@ -350,9 +355,20 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--steel); bor
 .map-note { padding: .7rem 1rem; color: var(--steel); font-size: .78rem; font-weight: 600; }
 .map-dot { display: inline-block; width: 8px; height: 8px; margin-right: .35rem; border-radius: 50%; background: var(--gold); }
 .spot-list { display: grid; gap: .75rem; }
-.spot-card { padding: 1.15rem; border-left: 3px solid transparent; background: var(--white); box-shadow: var(--shadow); transition: border-color .2s, transform .2s, opacity .2s; }
+.spot-card { display: grid; gap: .9rem; padding: 1.15rem; border-left: 3px solid transparent; background: var(--white); box-shadow: var(--shadow); transition: border-color .2s, transform .2s, opacity .2s; }
 .spot-card:hover, .spot-card.selected { border-left-color: var(--gold); transform: translateX(3px); }
 .spot-card.hidden { display: none; }
+.spot-media { overflow: hidden; border-radius: 10px; }
+.spot-gallery { display: grid; gap: .55rem; }
+.spot-gallery-track { display: flex; width: 100%; transition: transform .35s ease; }
+.spot-gallery-slide { min-width: 100%; width: 100%; height: 180px; object-fit: cover; display: block; }
+.spot-gallery-controls { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.spot-gallery-btn { width: 28px; height: 28px; border: 1px solid rgba(31, 78, 121, .18); border-radius: 50%; background: rgba(255, 255, 255, .9); color: var(--navy); font-size: 1.15rem; line-height: 1; display: grid; place-items: center; cursor: pointer; }
+.spot-gallery-btn:hover { border-color: var(--gold); color: var(--gold); }
+.spot-gallery-dots { display: flex; align-items: center; justify-content: center; gap: .35rem; flex: 1; }
+.spot-gallery-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(31, 78, 121, .3); }
+.spot-gallery-dot.active { background: var(--gold); }
+.spot-content { display: grid; }
 .spot-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .55rem; }
 .spot-number { color: var(--gold); font: 700 .8rem var(--font-head); letter-spacing: .1em; }
 .spot-distance { color: var(--gray); font-size: .72rem; }

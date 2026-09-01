@@ -20,13 +20,16 @@
 <header class="navbar">
   <div class="container nav-inner">
     <a class="brand" href="/?lang={{ lang }}" aria-label="{{ t.home_aria if lang == 'en' else 'Evara — beranda' }}">
-      <img class="brand-logo"
-           src="{{ url_for('static', filename='images/evara-logo-removebg.png') }}"
-           alt="Logo Evara">
+      <span class="brand-mark">
+        <img class="brand-logo"
+             src="{{ url_for('static', filename='images/evara-logo-removebg.png') }}"
+             alt="Logo Evara">
+        <span class="brand-tagline">{{ site.slogan }}</span>
+      </span>
     </a>
     <button class="nav-toggle" aria-label="{{ t.open_menu if lang == 'en' else 'Buka menu' }}" aria-expanded="false">☰</button>
     <nav class="nav-links">
-      <a href="/?lang={{ lang }}" class="{{ 'active' if request.path == '/' }}">{{ t.info_services if lang == 'en' else 'Info &amp; Layanan' }}</a>
+      <a href="/?lang={{ lang }}" class="{{ 'active' if request.path == '/' }}">{{ t.info_services if lang == 'en' else 'Info & Layanan' }}</a>
       <a href="/destinasi?lang={{ lang }}" class="{{ 'active' if request.path == '/destinasi' }}">{{ t.destinations if lang == 'en' else 'Destinasi' }}</a>
       <a href="/booking?lang={{ lang }}" class="btn btn-gold btn-sm {{ 'active' if request.path == '/booking' }}">{{ t.booking if lang == 'en' else 'Booking' }}</a>
       <a class="lang-switch" href="{{ request.path }}?lang={{ 'en' if lang == 'id' else 'id' }}" aria-label="Switch language">{{ 'EN' if lang == 'id' else 'ID' }}</a>
@@ -38,7 +41,7 @@
 
 <footer class="footer">
   <div class="container footer-inner">
-    <div>
+    <div class="footer-brand">
       <img class="footer-logo"
            src="{{ url_for('static', filename='images/evara-logo-removebg.png') }}"
            alt="Logo Evara">
@@ -49,7 +52,7 @@
       </div>
       <small class="footer-credit">Made by Vantage Solutions</small>
     </div>
-    <p class="muted">© <span id="year"></span> Evara · By J&amp;D Associates</p>
+    <p class="muted">© <span id="year"></span> Evara · By J&D Associates</p>
   </div>
 </footer>
 

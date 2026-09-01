@@ -31,10 +31,33 @@
       <div class="spot-list" id="spotList">
         {% for spot in spots %}
         <article class="spot-card reveal" data-ring="ring-{{ spot.ring }}" data-category="{{ spot.kategori|lower }}" data-spot-index="{{ loop.index0 }}">
-          <div class="spot-card-top"><span class="spot-number">{{ "%02d"|format(loop.index) }}</span><span class="spot-distance">{{ spot.jarak }}</span></div>
-          <h2>{{ spot.nama }}</h2>
-          <p>{{ spot.desk }}</p>
-          <button class="spot-link" type="button">{{ t.see_map if lang == 'en' else 'Lihat di peta' }} <span aria-hidden="true">↗</span></button>
+          {% set spot_images = spot.images if spot.images is defined and spot.images else ([spot.image] if spot.image is defined and spot.image else []) %}
+          {% if spot_images %}
+          <div class="spot-media spot-gallery" aria-label="Galeri {{ spot.nama }}">
+            <div class="spot-gallery-track">
+              {% for image in spot_images %}
+              <img class="spot-gallery-slide{% if loop.first %} is-active{% endif %}" src="{{ url_for('static', filename='images/' ~ image) }}" alt="{{ spot.nama }} - foto {{ loop.index }}">
+              {% endfor %}
+            </div>
+            {% if spot_images|length > 1 %}
+            <div class="spot-gallery-controls">
+              <button class="spot-gallery-btn prev" type="button" aria-label="Gambar sebelumnya">‹</button>
+              <div class="spot-gallery-dots" aria-hidden="true">
+                {% for image in spot_images %}
+                <span class="spot-gallery-dot{% if loop.first %} active{% endif %}"></span>
+                {% endfor %}
+              </div>
+              <button class="spot-gallery-btn next" type="button" aria-label="Gambar berikutnya">›</button>
+            </div>
+            {% endif %}
+          </div>
+          {% endif %}
+          <div class="spot-content">
+            <div class="spot-card-top"><span class="spot-number">{{ "%02d"|format(loop.index) }}</span><span class="spot-distance">{{ spot.jarak }}</span></div>
+            <h2>{{ spot.nama }}</h2>
+            <p>{{ spot.desk }}</p>
+            <button class="spot-link" type="button">{{ t.see_map if lang == 'en' else 'Lihat di peta' }} <span aria-hidden="true">↗</span></button>
+          </div>
         </article>
         {% endfor %}
       </div>

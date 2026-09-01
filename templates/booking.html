@@ -29,10 +29,34 @@
       <div class="form-group">
         <label for="paket">{{ t.package if lang == 'en' else 'Paket' }} *</label>
         <select id="paket" name="paket" required>
-          {% for s in services %}
-          <option value="{{ s.nama }}" data-harga="{{ s.harga or '' }}" data-price-tiers='{{ s.harga_tiers|default([])|tojson }}' data-by-request="{{ 'true' if s.harga is none else 'false' }}">{{ s.nama }} — {{ s.durasi }}</option>
-          {% endfor %}
+          <optgroup label="Island Hopping">
+            {% for s in services if s.kategori == 'Island Hopping' %}
+            <option value="{{ s.nama }}" data-harga="{{ s.harga or '' }}" data-price-tiers='{{ s.harga_tiers|default([])|tojson }}' data-by-request="{{ 'true' if s.harga is none else 'false' }}">{{ s.nama }} — {{ s.durasi }}</option>
+            {% endfor %}
+          </optgroup>
+          <optgroup label="Snorkeling">
+            {% for s in services if s.kategori == 'Snorkeling' %}
+            <option value="{{ s.nama }}" data-harga="{{ s.harga or '' }}" data-price-tiers='{{ s.harga_tiers|default([])|tojson }}' data-by-request="{{ 'true' if s.harga is none else 'false' }}">{{ s.nama }} — {{ s.durasi }}</option>
+            {% endfor %}
+          </optgroup>
+          <optgroup label="Fishing & Diving">
+            {% for s in services if s.kategori in ['Fishing', 'Diving'] %}
+            <option value="{{ s.nama }}" data-harga="{{ s.harga or '' }}" data-price-tiers='{{ s.harga_tiers|default([])|tojson }}' data-by-request="{{ 'true' if s.harga is none else 'false' }}">{{ s.nama }} — {{ s.durasi }}</option>
+            {% endfor %}
+          </optgroup>
+          {% if services|selectattr('kategori', 'equalto', 'Other')|list %}
+          <optgroup label="Lainnya">
+            {% for s in services if s.kategori == 'Other' %}
+            <option value="{{ s.nama }}" data-harga="{{ s.harga or '' }}" data-price-tiers='{{ s.harga_tiers|default([])|tojson }}' data-by-request="{{ 'true' if s.harga is none else 'false' }}">{{ s.nama }} — {{ s.durasi }}</option>
+            {% endfor %}
+          </optgroup>
+          {% endif %}
         </select>
+      </div>
+      <div class="form-group" id="addonGroup" hidden>
+        <label>
+          <input id="tourGuide" name="tourGuide" type="checkbox"> Tambah tour guide + camera man (+Rp100.000)
+        </label>
       </div>
       <div class="form-group">
         <label for="catatan">{{ t.notes if lang == 'en' else 'Catatan' }}</label>

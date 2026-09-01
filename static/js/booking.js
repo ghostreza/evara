@@ -7,6 +7,29 @@ const fmtIDR = new Intl.NumberFormat("id-ID", { style: "currency", currency: "ID
 const tgl = document.getElementById("tanggal");
 tgl.min = new Date().toISOString().split("T")[0];
 
+function updateSnorkelingAddon() {
+  const selectedPackage = form.paket.value || "";
+  const isSnorkeling = selectedPackage.toLowerCase().includes("snorkeling");
+  const addonGroup = document.getElementById("addonGroup");
+  const tourGuide = document.getElementById("tourGuide");
+
+  addonGroup.hidden = !isSnorkeling;
+  if (!isSnorkeling) {
+    tourGuide.checked = false;
+  }
+
+  const paxInput = document.getElementById("pax");
+  if (isSnorkeling) {
+    paxInput.min = 3;
+    paxInput.max = 6;
+    if ((+paxInput.value || 0) < 3) paxInput.value = 3;
+    if ((+paxInput.value || 0) > 6) paxInput.value = 6;
+  } else {
+    paxInput.min = 1;
+    paxInput.max = 12;
+  }
+}
+
 // estimasi live
 function hitungEstimasi() {
   const opt = form.paket.selectedOptions[0];
@@ -14,16 +37,30 @@ function hitungEstimasi() {
     document.getElementById("estimate").textContent = isEnglish ? "Contact crew" : "Hubungi kru";
     return 0;
   }
+
   const pax = +form.pax.value || 0;
   const tiers = JSON.parse(opt.dataset.priceTiers || "[]");
   const tier = tiers.find((item) => pax >= item.min && pax <= item.max);
   const unitPrice = tier?.harga || +opt.dataset.harga || 0;
-  const total = tier?.unit === "/ trip" ? unitPrice : unitPrice * pax;
+  let total = tier?.unit === "/ trip" ? unitPrice : unitPrice * pax;
+
+  if (form.paket.value.toLowerCase().includes("snorkeling") && document.getElementById("tourGuide").checked) {
+    total += 100000;
+  }
+
   document.getElementById("estimate").textContent = fmtIDR.format(total);
   return total;
 }
-form.paket.addEventListener("change", hitungEstimasi);
-form.pax.addEventListener("input", hitungEstimasi);
+form.paket.addEventListener("change", () => {
+  updateSnorkelingAddon();
+  hitungEstimasi();
+});
+form.pax.addEventListener("input", () => {
+  updateSnorkelingAddon();
+  hitungEstimasi();
+});
+document.getElementById("tourGuide").addEventListener("change", hitungEstimasi);
+updateSnorkelingAddon();
 hitungEstimasi();
 
 // label tombol mengikuti kanal
@@ -44,12 +81,15 @@ function tanggalIndo(iso) {
 form.addEventListener("submit", (e) => {
   e.preventDefault(); // submit event hanya fires jika valid (HTML5 validation)
   const total = hitungEstimasi();
+  const extraText = form.paket.value.toLowerCase().includes("snorkeling") && document.getElementById("tourGuide").checked
+    ? " + tour guide + camera man"
+    : "";
   const pesan =
 `Halo Evara! 👋 Saya ingin memesan:
 
 Nama    : ${form.nama.value}
 Tanggal : ${tanggalIndo(form.tanggal.value)}
-Paket   : ${form.paket.value} (${form.pax.value} orang)
+Paket   : ${form.paket.value} (${form.pax.value} orang)${extraText}
 Estimasi: ${fmtIDR.format(total)}
 Catatan : ${form.catatan.value || "-"}
 
