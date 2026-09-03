@@ -3,8 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}{{ site.name }}{% endblock %} · {{ t.charter if lang == 'en' else 'Charter Perahu' }}</title>
-  <meta name="description" content="{{ site.tagline if lang == 'id' else 'Boat charter for fishing, snorkeling, diving & island hopping' }}">
+  <title>{% block title %}{{ site.name }}{% endblock %} · {{ t.charter if lang == 'en' else 'Charter Perahu Pulau Tidung' }}</title>
+  <meta name="description" content="{{ seo_description }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="alternate" hreflang="id" href="{{ alternate_id_url }}">
+  <link rel="alternate" hreflang="en" href="{{ alternate_en_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ alternate_id_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Samudra Evara">
+  <meta property="og:title" content="{{ self.title() }}">
+  <meta property="og:description" content="{{ seo_description }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/evara-boat-beach.jpeg') }}">
+  <script type="application/ld+json">
+  {{ {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": DOMAIN ~ "#business" if DOMAIN is defined else "https://samudraevara.com#business",
+    "name": "Samudra Evara",
+    "url": DOMAIN if DOMAIN is defined else "https://samudraevara.com",
+    "description": seo_description,
+    "telephone": "+6287775382824",
+    "email": site.email,
+    "areaServed": ["Pulau Tidung", "Kepulauan Seribu", "Jakarta"],
+    "priceRange": "$$",
+    "image": request.url_root.rstrip('/') ~ url_for('static', filename='images/evara-boat-beach.jpeg'),
+    "serviceType": ["Boat charter", "Fishing trip", "Snorkeling", "Island hopping"]
+  }|tojson }}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">

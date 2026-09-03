@@ -298,6 +298,11 @@ def localized_content(lang):
         "A 12-20 m site with dense hard coral, frequented by giant trevally and barracuda.",
         "Deep reefs and offshore fish aggregating devices, favored for bottom fishing and jigging.",
         "Deep pelagic waters for trolling, targeting Spanish mackerel, tuna, and skipjack.",
+        "An uninhabited island with shallow beaches and calm reef flats, ideal for a relaxed snorkeling trip.",
+        "An 18-25 m wall dive around Payung Island with moderate to strong currents, sea fans, turtles, and pelagic fish.",
+        "A 12-20 m deep site with dense hard coral, where giant trevally and barracuda are often found.",
+        "Deep reefs and offshore fish aggregating devices, favored for bottom fishing and jigging for grouper, snapper, and emperor fish.",
+        "Deep waters along the Pulau Pari route for trolling, targeting Spanish mackerel, tuna, and skipjack.",
     ])]
     options = [
         {"judul": "Via Kali Adem / Muara Angke Port", "label": "Budget option", "desk": "A popular route for backpackers and budget groups.", "pilihan": [

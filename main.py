@@ -1,5 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, Response, render_template, request
 import content
+
+
+DOMAIN = "https://samudraevara.com"
 
 
 TRANSLATIONS = {
@@ -41,11 +44,52 @@ def create_app():
     app.config.from_object("config.Config")
 
     @app.context_processor
+    def inject_seo():
+        lang = request.args.get("lang", "id")
+        if lang not in ("id", "en"):
+            lang = "id"
+        path = request.path if request.path != "/" else ""
+        canonical_url = f"{DOMAIN}{path}?lang={lang}"
+        return {
+            "canonical_url": canonical_url,
+            "alternate_id_url": f"{DOMAIN}{path}?lang=id",
+            "alternate_en_url": f"{DOMAIN}{path}?lang=en",
+            "seo_description": (
+                "Samudra Evara menyediakan charter perahu Pulau Tidung untuk "
+                "memancing, snorkeling, diving, dan island hopping bersama kru berpengalaman."
+                if lang == "id" else
+                "Samudra Evara offers boat charters from Tidung Island for fishing, snorkeling, "
+                "diving, and island hopping with an experienced crew."
+            ),
+        }
+
+    @app.context_processor
     def inject_language():
         lang = request.args.get("lang", "id")
         if lang not in ("id", "en"):
             lang = "id"
         return {"lang": lang, "t": TRANSLATIONS.get(lang, {})}
+
+    @app.route("/robots.txt")
+    def robots():
+        body = f"User-agent: *\nAllow: /\nDisallow: /booking\nSitemap: {DOMAIN}/sitemap.xml\n"
+        return Response(body, mimetype="text/plain")
+
+    @app.route("/sitemap.xml")
+    def sitemap():
+        urls = [
+            ("", "1.0"),
+            ("/destinasi", "0.8"),
+        ]
+        entries = []
+        for path, priority in urls:
+            for lang in ("id", "en"):
+                loc = f"{DOMAIN}{path}?lang={lang}"
+                entries.append(
+                    f"  <url><loc>{loc}</loc><changefreq>monthly</changefreq><priority>{priority}</priority></url>"
+                )
+        xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n" + "\n".join(entries) + "\n</urlset>\n"
+        return Response(xml, mimetype="application/xml")
 
     @app.route("/")
     def index():
