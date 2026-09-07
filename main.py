@@ -55,8 +55,8 @@ def create_app():
             "alternate_id_url": f"{DOMAIN}{path}?lang=id",
             "alternate_en_url": f"{DOMAIN}{path}?lang=en",
             "seo_description": (
-                "Samudra Evara menyediakan charter perahu Pulau Tidung untuk "
-                "memancing, snorkeling, diving, dan island hopping bersama kru berpengalaman."
+                "Paket wisata Pulau Tidung dan sewa kapal Evara untuk snorkeling, fishing, island hopping, "
+                "serta informasi rute Jakarta, Tangerang, jadwal Muara Angke, dan harga trip."
                 if lang == "id" else
                 "Samudra Evara offers boat charters from Tidung Island for fishing, snorkeling, "
                 "diving, and island hopping with an experienced crew."
@@ -99,7 +99,9 @@ def create_app():
                                site=data["site"], boat=data["boat"], services=data["services"],
                                steps=data["access_steps"], story=data["story"], story_sign=data["story_sign"],
                                story_media=data["story_media"], access_options=data["access_options"],
-                               access_comparison=data["access_comparison"], access_tips=data["access_tips"])
+                               access_comparison=data["access_comparison"], access_tips=data["access_tips"],
+                               seo_faq=data["seo_faq"],
+                               seo_faq_schema=[{"@type": "Question", "name": item["question"], "acceptedAnswer": {"@type": "Answer", "text": item["answer"]}} for item in data["seo_faq"]])
 
     @app.route("/destinasi")
     def destinasi():

@@ -1,5 +1,10 @@
 {% extends "base.html" %}
-{% block title %}{{ t.info_services if lang == 'en' else 'Info & Layanan' }}{% endblock %}
+{% block title %}{{ 'Tidung Island Boat Charter | Snorkeling, Fishing & Trips' if lang == 'en' else 'Paket Wisata Pulau Tidung | Snorkeling, Fishing & Sewa Kapal' }}{% endblock %}
+{% block head_extra %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": seo_faq_schema}|tojson }}
+</script>
+{% endblock %}
 
 {% block content %}
 <section class="hero">
@@ -70,7 +75,7 @@
 <section class="section alt">
   <div class="container">
     <div class="section-head reveal">
-      <h2>{{ t.services_title if lang == 'en' else 'Layanan &amp; Paket' }}</h2>
+      <h2>{{ t.services_title if lang == 'en' else 'Layanan & Paket' }}</h2>
       <p class="muted">{{ t.services_description if lang == 'en' else 'Pilih aktivitas Anda — semua termasuk kru dan alat.' }}</p>
     </div>
     <div class="grid">
@@ -94,10 +99,10 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="akses">
   <div class="container">
     <div class="section-head reveal">
-      <h2>{{ t.access_title if lang == 'en' else 'Cara Akses &amp; Pemesanan' }}</h2>
+      <h2>{{ t.access_title if lang == 'en' else 'Cara Akses & Pemesanan' }}</h2>
       <p class="muted">{{ t.access_description if lang == 'en' else 'Pilih jalur menuju Pulau Tidung sesuai waktu, kenyamanan, dan anggaran Anda.' }}</p>
     </div>
     <div class="access-options">
@@ -129,6 +134,44 @@
       <h3>{{ t.summary_title if lang == 'en' else 'Ringkasan pilihan' }}</h3>
       <div class="summary-table-wrap"><table class="summary-table"><thead><tr><th>{{ t.from if lang == 'en' else 'Berangkat dari' }}</th><th>{{ t.boat if lang == 'en' else 'Kapal' }}</th><th>{{ t.fare if lang == 'en' else 'Tarif' }}</th><th>{{ t.duration if lang == 'en' else 'Durasi' }}</th><th>{{ t.advantage if lang == 'en' else 'Keunggulan' }}</th></tr></thead><tbody>{% for row in access_comparison %}<tr>{% for cell in row %}<td>{{ cell }}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div>
       <div class="access-tips"><strong>{{ t.important_tips if lang == 'en' else 'Tips penting' }}</strong>{% for tip in access_tips %}<p>{{ tip }}</p>{% endfor %}</div>
+    </div>
+  </div>
+</section>
+
+<section class="section seo-guide">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow seo-eyebrow">PANDUAN PERJALANAN TIDUNG</p>
+      <h2>Paket wisata Pulau Tidung, open trip, dan sewa kapal</h2>
+      <p class="muted">Temukan informasi rute, jadwal kapal, harga aktivitas, dan pilihan perjalanan sebelum berangkat bersama Evara.</p>
+    </div>
+    <div class="seo-guide-grid">
+      <article class="seo-guide-item reveal">
+        <h3>Cara ke Pulau Tidung dari Jakarta atau Tangerang</h3>
+        <p>Dari Jakarta, pilih kapal dari Kali Adem atau Muara Angke dengan keberangkatan pagi sekitar 07.00–08.00 WIB, atau gunakan alternatif Sunda Kelapa. Dari Tangerang, Pelabuhan Cituis menjadi pilihan praktis dengan estimasi 1,5–2 jam. Jadwal kapal dapat berubah, jadi konfirmasi sebelum berangkat.</p>
+        <a href="#akses">Lihat rute dan jadwal kapal</a>
+      </article>
+      <article class="seo-guide-item reveal">
+        <h3>Harga snorkeling dan spot terbaik Pulau Tidung</h3>
+        <p>Harga snorkeling Pulau Tidung bersama Evara mulai Rp250.000 per orang untuk 1,5 jam, minimal 3 orang. Spot snorkeling meliputi Tidung Kecil, Jembatan Cinta, Pulau Payung, Gusong Karang Beras, dan Pulau Tikus, menyesuaikan cuaca serta arus.</p>
+        <a href="/destinasi?lang={{ lang }}">Jelajahi spot snorkeling</a>
+      </article>
+      <article class="seo-guide-item reveal">
+        <h3>Sewa perahu Pulau Tidung untuk mancing</h3>
+        <p>Fishing trip hingga 8 jam cocok untuk pemula maupun pemancing berpengalaman. Tarif per orang mulai Rp250.000 untuk 5–6 orang, Rp300.000 untuk 3–4 orang, atau Rp500.000 untuk 1–2 orang. Kru menentukan rute berdasarkan kondisi laut dan target ikan.</p>
+        <a href="/booking?lang={{ lang }}">Cek sewa kapal dan jadwal</a>
+      </article>
+      <article class="seo-guide-item reveal">
+        <h3>Diving Pulau Tidung untuk pemula dan biaya 2H1M</h3>
+        <p>Tepi Karang Tidung Kecil memiliki area fun dive yang ramah pemula Open Water. Layanan diving resmi Evara direncanakan mulai 2027. Untuk biaya ke Pulau Tidung 2 hari 1 malam, siapkan komponen tiket kapal, penginapan, makan, aktivitas, dan transportasi lokal; total kami hitungkan sesuai kebutuhan.</p>
+        <a href="/booking?lang={{ lang }}">Susun paket wisata Pulau Tidung</a>
+      </article>
+    </div>
+    <div class="seo-faq reveal">
+      <h2>Pertanyaan umum Pulau Tidung</h2>
+      {% for item in seo_faq %}
+      <details><summary>{{ item.question }}</summary><p>{{ item.answer }}</p></details>
+      {% endfor %}
     </div>
   </div>
 </section>
