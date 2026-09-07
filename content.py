@@ -2,7 +2,7 @@ SITE = {
     "name": "Evara",
     "tagline": "Charter perahu untuk memancing, snorkeling, diving & island hopping",
     "slogan": "Blessings of the sea, Timeless memories",
-    "wa_number": "6287775382824",
+    "wa_number": "6287828101971",
     "email": "jd.associates800@gmail.com",
     # baru: quote untuk section full-image di halaman utama
     "quote": "Laut, sekali ia menebar pesonanya, akan memegangmu dalam jaring kekaguman — selamanya.",
